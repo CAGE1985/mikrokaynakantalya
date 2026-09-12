@@ -52,11 +52,11 @@ node tests/mobile-qa.mjs
 QA_MODE=focus node tests/mobile-qa.mjs
 ```
 
-Tarayıcı testleri Playwright Chromium gerektirir. Gerekirse `npx playwright install chromium` kullanın. Test varsayılanı `http://localhost:3012`; `QA_BASE_URL` ile değiştirilebilir. Testler gerçek randevu oluşturmaz ve dış sistemlere kişisel bilgi göndermez. Sonuçlar `tests/MOBILE-QA.md` ve `tests/MOBILE-QA-RECHECK.md` dosyalarında.
+Tarayıcı testleri Playwright Chromium gerektirir. Gerekirse `npx playwright install chromium` kullanın. Test varsayılanı `http://localhost:3012`; `QA_BASE_URL` ile değiştirilebilir. Testler gerçek randevu oluşturmaz ve dış sistemlere kişisel bilgi göndermez. Sonuçlar `tests/MOBILE-QA.md` ve `tests/MOBILE-QA-RECHECK.md` dosyalarında. Mobil hedefli tekrar kontrolü 250/250 geçti. Son üretim axe denetimi TR390 / AR390 / TR1280 için sıfır otomatik ihlal buldu; `tests/accessibility-qa-report.md`. Bu otomatik sonuç tam WCAG uygunluk beyanı değildir.
 
 ## GitHub ve Vercel
 
-Bu proje kendi bağımsız Git deposudur. `codex/mikro-kaynak-site` ilk uygulama dalıdır. GitHub deposu özel olarak oluşturulur; yalnız web dosyaları ve ilgili proje belgeleri sürümlenir.
+Bu proje kendi bağımsız Git deposudur. `codex/mikro-kaynak-site` ilk uygulama dalıdır. GitHub deposu özel olarak oluşturuldu: https://github.com/CAGE1985/mikrokaynakantalya . Yalnız web dosyaları ve ilgili proje belgeleri sürümlenir.
 
 Yayın hedefi Vercel'dir. Mevcut bağlı `muratproje` ekibinin planı 12 Eylül 2026 kontrolünde Hobby idi. [Vercel Hobby koşulları](https://vercel.com/docs/plans/hobby) ticari kullanıma izin vermediği için işletme yayını öncesi uygun ücretli plan/ekip gerekir. Onaysız abonelik veya yükseltme yapılmaz.
 
@@ -68,3 +68,7 @@ vercel deploy --prod --scope EKIP
 ```
 
 Ardından GitHub bağlantısı, ana domain/WWW yönlendirmesi ve Search Console doğrulaması tamamlanır. Canlı dağıtım, medya, 5 dil, robots/canonical ve randevu hedefleri tekrar kontrol edilir.
+
+## Son mobil ölçüm
+
+Yerel üretim Lighthouse mobil/yavaş bağlantı simülasyonu: performans91, erişilebilirlik100, en iyiuygulamalar100, teknikSEO100. FCP0,9sn, LCP3,5sn, TBT10ms, CLS0. Bu tek laboratuvar koşusudur; canlı trafik veya sıralama sonucu değildir. `tests/LIGHTHOUSE.md` ayrıntıları ve kalan LCP iyileştirme alanını kaydeder. Font optimizasyonundan sonraki beş dil/iki mobil genişlik tekrar testi250/250 geçti.

@@ -292,3 +292,6 @@ Bu doküman planlama çıktısıdır. GitHub deposu oluşturulmadı, Vercel yay�
 - Kaynakfoto/video orijinalleri yerel olarak korunuyor; webkopyaları public/media altında.
 - İki anlatım videosu Türkçe ve gömülü Türkçe yazılıdır;5dilde başlık ve özet mevcut, ses/VTTçevirisi yoktur.
 - Mevcut Vercel ekibi Hobby planında. Ticari yayın için uygun plan/ekip gereksinimi nedeniyle onaysız ücretli yükseltme yapılmadı. GitHub ve yerel çalışan önizleme tamamlanarak bu karar kullanıcıya sunulur.
+
+- GitHub özel depo oluşturuldu ve kod yüklendi: https://github.com/CAGE1985/mikrokaynakantalya . Yerel üretim önizlemesi http://localhost:3013 .
+- Son mobil Lighthouse:91performans/100erişilebilirlik/100eniyiuygulamalar/100teknikSEO; LCP3,5sn laboratuvar değeri, gerçek kullanıcı ölçümü değildir. Son5dil×2genişlik kontrolü250/250 geçti.

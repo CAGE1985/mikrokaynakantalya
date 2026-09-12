@@ -18,10 +18,71 @@ import subprocess
 
 from PIL import Image
 from fontTools.ttLib import TTFont
+from fontTools import subset
+from fontTools.varLib.instancer import instantiateVariableFont
 
 ROOT = Path(__file__).resolve().parents[1]
 MEDIA = ROOT / "public/media"
 FONTS = ROOT / "public/fonts"
+
+
+def optimized_font(source: Path, target: Path, name: str) -> dict:
+    """Retain each site's language repertoire and shaping, plus variable weight.
+
+    Full source TTFs remain untouched. The other variable axis is fixed at its
+    source default so small text retains the intended text optical design.
+    """
+    ranges = [(0x0000, 0x024F), (0x2000, 0x206F), (0x20A0, 0x20CF),
+              (0x2190, 0x21FF), (0x2200, 0x22FF), (0x25A0, 0x25FF), (0x2700, 0x27BF)]
+    if name == "Inter":
+        ranges += [(0x0400, 0x052F), (0x2DE0, 0x2DFF), (0xA640, 0xA69F)]
+        languages = ("tr", "en", "de", "ru")
+        fixed_axes = {"opsz": 14}
+    else:
+        ranges += [(0x0600, 0x06FF), (0x0750, 0x077F), (0x0870, 0x089F),
+                   (0x08A0, 0x08FF), (0xFB50, 0xFDFF), (0xFE70, 0xFEFF),
+                   (0x10EC0, 0x10EFF)]
+        languages = ("ar",)
+        fixed_axes = {"wdth": 100}
+    repertoire = {codepoint for first, last in ranges for codepoint in range(first, last + 1)}
+    actual_characters = set()
+    for language in languages:
+        content_path = ROOT / f"src/content/{language}.ts"
+        if content_path.exists():
+            actual_characters.update(map(ord, content_path.read_text(encoding="utf-8")))
+    repertoire.update(actual_characters)
+    original_hash = checksum(source)
+    font = TTFont(source)
+    source_cmap = font.getBestCmap()
+    required = repertoire.intersection(source_cmap)
+    options = subset.Options()
+    options.layout_features = ["*"]
+    options.layout_scripts = ["*"]
+    options.notdef_outline = True
+    options.recommended_glyphs = True
+    options.name_IDs = [0, 1, 2, 3, 4, 5, 6, 13, 14, 16, 17, 25]
+    options.name_legacy = True
+    options.name_languages = ["*"]
+    worker = subset.Subsetter(options=options)
+    worker.populate(unicodes=required)
+    worker.subset(font)
+    font = instantiateVariableFont(font, fixed_axes, inplace=True)
+    font.flavor = "woff2"
+    temporary = target.with_name(target.stem + ".preparing.woff2")
+    font.save(temporary)
+    output = TTFont(temporary)
+    assert required.issubset(output.getBestCmap()), f"Lost required characters: {name}"
+    assert [axis.axisTag for axis in output["fvar"].axes] == ["wght"]
+    assert output["fvar"].axes[0].minValue == 100 and output["fvar"].axes[0].maxValue == 900
+    if name == "NotoSansArabic":
+        assert "GSUB" in output and "GPOS" in output
+        scripts = {record.ScriptTag for record in output["GSUB"].table.ScriptList.ScriptRecord}
+        assert "arab" in scripts, "Arabic shaping script missing"
+    assert checksum(source) == original_hash
+    temporary.replace(target)
+    return {"fixedAxes": fixed_axes, "retainedUnicodeRanges": [f"U+{first:04X}-{last:04X}" for first, last in ranges],
+            "requiredCharactersVerified": len(required), "glyphs": len(output.getGlyphOrder()),
+            "actualContentLanguages": list(languages), "shapingFeaturesPreserved": True}
 
 
 def checksum(path: Path) -> str:
@@ -140,10 +201,7 @@ def main() -> None:
         if not license_path.exists():
             subprocess.run(["curl", "-fsSL", base + "OFL.txt", "-o", str(license_path)], check=True)
         compressed = target.with_suffix(".woff2")
-        if not compressed.exists() or compressed.stat().st_mtime < target.stat().st_mtime:
-            font = TTFont(target)
-            font.flavor = "woff2"
-            font.save(compressed)
+        optimization = optimized_font(target, compressed, name)
         font = TTFont(compressed)
         characters = "ĞğİıŞşÇçÖöÜüЖжЯяЮю" if name == "Inter" else "العربية"
         assert all(ord(character) in font.getBestCmap() for character in characters)
@@ -153,7 +211,8 @@ def main() -> None:
                       "bytes": compressed.stat().st_size, "sha256": checksum(compressed),
                       "sourceTtfUrl": "/fonts/" + target.name, "sourceTtfBytes": target.stat().st_size,
                       "sourceTtfSha256": checksum(target), "variableAxes": axes,
-                      "verifiedCharacters": characters, "license": "/fonts/" + license_path.name})
+                      "verifiedCharacters": characters, "optimization": optimization,
+                      "license": "/fonts/" + license_path.name})
     print("Local variable fonts and OFL licenses ready.", flush=True)
 
     jobs = [

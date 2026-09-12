@@ -121,7 +121,11 @@ export function Gallery({
         )}
       </div>
       <div className="gallery-bottom">
-        <div className="gallery-thumbnails" aria-label={copy.title}>
+        <div
+          className="gallery-thumbnails"
+          role="group"
+          aria-label={copy.title}
+        >
           {numbers.map((n, i) => (
             <button
               key={n}

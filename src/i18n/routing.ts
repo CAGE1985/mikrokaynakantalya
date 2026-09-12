@@ -6,6 +6,8 @@ export const routing = defineRouting({
   defaultLocale: "tr",
   localePrefix: "as-needed",
   localeDetection: false,
+  // The page metadata supplies canonical-domain alternates for every locale.
+  alternateLinks: false,
 });
 export const isLocale = (value: string): value is Locale =>
   locales.includes(value as Locale);

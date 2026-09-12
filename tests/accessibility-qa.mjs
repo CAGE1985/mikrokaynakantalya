@@ -64,6 +64,19 @@ try {
         preload: node.preload, muted: node.muted, autoplay: node.autoplay,
         captionTracks: node.querySelectorAll('track[kind="captions"],track[kind="subtitles"]').length }))),
     };
+    if (variant.name === 'tr-mobile-390') {
+      const playButton = page.locator('.video-poster').first();
+      await playButton.scrollIntoViewIfNeeded();
+      await playButton.focus();
+      await page.keyboard.press('Enter');
+      await page.waitForFunction(() => document.activeElement?.tagName === 'VIDEO', {}, { timeout: 10000 });
+      result.keyboardVideoFocus = await page.evaluate(() => ({
+        pass: document.activeElement?.tagName === 'VIDEO' && document.activeElement.controls,
+        activeTag: document.activeElement?.tagName, controls: document.activeElement?.controls,
+        src: document.activeElement?.getAttribute('src'),
+      }));
+      await page.locator('video').evaluateAll(nodes => nodes.forEach(node => node.pause()));
+    }
     results.push(result);
     console.log(`${variant.name}: ${audit.violations.length} violation rules, ${audit.incomplete.length} manual-review rules; ` +
       `${(initialResources.transferBytes / 1024).toFixed(0)} KiB initial, ${initialMediaRequests.length} initial video requests, ` +
@@ -79,13 +92,15 @@ const report = { base, runAt: new Date().toISOString(), browser: 'Chrome headles
 await writeFile('tests/accessibility-qa-report.json', JSON.stringify(report, null, 2));
 const lines = [
   '# Accessibility and initial resource audit', '', `Run: ${report.runAt}`, `Base: ${base}`, '',
-  'Production Chrome audit at 390px Turkish/Arabic and 1280px Turkish. All reveal sections were scrolled into view and FAQ answers expanded before axe WCAG 2 A/AA and 2.1 AA analysis. No forms were submitted or videos played.', '',
+  'Production Chrome audit at 390px Turkish/Arabic and 1280px Turkish. All reveal sections were scrolled into view and FAQ answers expanded before axe WCAG 2 A/AA and 2.1 AA analysis. No forms were submitted. Videos remained unplayed during resource measurements; a separate Enter-key check subsequently started and paused the first instructional video.', '',
   '| Variant | Violation rules | Initial transfer | Transfer after scrolling | Initial / after-scroll video requests |',
   '|---|---:|---:|---:|---:|',
   ...results.map(result => `| ${result.name} | ${result.violations.length} | ${(result.initialResources.transferBytes / 1024).toFixed(0)} KiB | ${(result.scrollResources.transferBytes / 1024).toFixed(0)} KiB | ${result.initialMediaRequests.length} / ${result.mediaAfterScroll.length} |`),
   '', '## Automated violations', '',
   ...results.flatMap(result => result.violations.map(rule => `- **${result.name}: ${rule.id}** (${rule.impact}) — ${rule.help}. ${rule.nodes.map(node => `\`${node.target.join(' ')}\``).join(', ')}`)),
   ...(results.every(result => !result.violations.length) ? ['None detected by this automated audit.'] : []),
+  '', '## Keyboard video focus', '',
+  ...results.filter(result => result.keyboardVideoFocus).map(result => `- ${result.name}: Enter activates the video and transfers focus to native VIDEO controls — ${result.keyboardVideoFocus.pass ? 'PASS' : 'FAIL'}.`),
   '', '## Manual review and scope', '',
   '- Automated axe checks do not establish full WCAG compliance. Incomplete color-contrast checks involving images/gradients and audio/video accessibility require human review.',
   '- Instructional videos contain original Turkish burned-in text. The audit records caption track presence but does not claim that visible text fully transcribes dialogue and non-speech audio.',
@@ -93,4 +108,4 @@ const lines = [
   '- Full resource lists, selectors, contrast measurements and manual-review candidates are in `tests/accessibility-qa-report.json`.',
 ];
 await writeFile('tests/accessibility-qa-report.md', lines.join('\n') + '\n');
-process.exitCode = results.some(result => result.violations.length || result.errors.length || result.initialMediaRequests.length || result.hiddenRevealCount) ? 1 : 0;
+process.exitCode = results.some(result => result.violations.length || result.errors.length || result.initialMediaRequests.length || result.hiddenRevealCount || result.keyboardVideoFocus?.pass === false) ? 1 : 0;

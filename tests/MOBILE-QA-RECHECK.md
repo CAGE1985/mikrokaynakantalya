@@ -1,7 +1,7 @@
 # Independent mobile browser QA — focus and initial-state recheck
 
-Run: 2026-09-12T20:06:56.303Z
-Base: http://localhost:3012
+Run: 2026-09-12T20:24:08.272Z
+Base: http://localhost:3013
 Command: `QA_MODE=focus node tests/mobile-qa.mjs`
 
 - tr-390: 25/25 checks passed

@@ -88,3 +88,8 @@ Google'ın [VideoObject tanımına](https://developers.google.com/search/docs/ap
 ## Kontrol yöntemi ve sınırlar
 
 Ham HTTP yanıtları standart HTML ayrıştırıcısıyla incelendi. Yerel uygulamanın beş dili için canonical, hreflang, robots, JSON-LD, dil/yön ve SSS sayıları karşılaştırıldı. Ayrı headless Chrome oturumunda mobil klavye adımları ve dil seçici bağlantıları doğrulandı. Masaüstü ve mobil görsel tasarımın bütün ekran boyutlarında tam regresyon testi bu raporun kapsamı değil; ürün değişiklikleri ana uygulama görevi tarafından yürütülüyor.
+
+
+## Son uygulama doğrulaması
+
+Videoyu Enter ile başlatınca odağın BODY’ye düşmesi giderildi. Üretim tarayıcısında odak VIDEO öğesine geçiyor ve kontroller etkin. Küçük metin kontrastları koyulaştırıldı, etiketli galeri/sosyal gruplarına role=group eklendi. TR390 / AR390 / TR1280 için son axe koşusu sıfır otomatik ihlal buldu. Kaynak videoların sesi ve gömülü yazıları Türkçedir; ek VTT altyazıları bu sürümde yoktur.

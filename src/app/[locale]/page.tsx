@@ -218,7 +218,8 @@ export default async function Home({ params }: Props) {
               width={1320}
               height={2340}
               sizes="(max-width: 700px) 100vw, 52vw"
-              priority
+              loading="eager"
+              fetchPriority="high"
               quality={85}
             />
             <div className="hero-photo-shade" />
@@ -622,7 +623,11 @@ export default async function Home({ params }: Props) {
             />
           </a>
           <p>{c.footer.tagline}</p>
-          <div className="social-links" aria-label={c.footer.social}>
+          <div
+            className="social-links"
+            role="group"
+            aria-label={c.footer.social}
+          >
             <a href={links.instagram} aria-label="Instagram">
               <Instagram size={21} />
             </a>

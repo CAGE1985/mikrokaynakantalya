@@ -373,18 +373,12 @@
       "name": "Inter",
       "url": "/fonts/Inter.woff2",
       "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/inter/Inter%5Bopsz%2Cwght%5D.ttf",
-      "bytes": 350372,
-      "sha256": "a2cc4486774d9bd824caf95a2b6eedd7b553ef02a4f0e9afa9b8180fc23a5865",
+      "bytes": 128520,
+      "sha256": "6e5727d97bd9c87a9d1d4502b653bdf3228ef09d821bdc5d743cb081f880e567",
       "sourceTtfUrl": "/fonts/Inter.ttf",
       "sourceTtfBytes": 876576,
       "sourceTtfSha256": "29160a80ff49ddcab2c97711247e08b1fab27a484a329ce8b813d820dc559031",
       "variableAxes": [
-        {
-          "tag": "opsz",
-          "min": 14.0,
-          "default": 14.0,
-          "max": 32.0
-        },
         {
           "tag": "wght",
           "min": 100.0,
@@ -393,14 +387,40 @@
         }
       ],
       "verifiedCharacters": "ĞğİıŞşÇçÖöÜüЖжЯяЮю",
+      "optimization": {
+        "fixedAxes": {
+          "opsz": 14
+        },
+        "retainedUnicodeRanges": [
+          "U+0000-024F",
+          "U+2000-206F",
+          "U+20A0-20CF",
+          "U+2190-21FF",
+          "U+2200-22FF",
+          "U+25A0-25FF",
+          "U+2700-27BF",
+          "U+0400-052F",
+          "U+2DE0-2DFF",
+          "U+A640-A69F"
+        ],
+        "requiredCharactersVerified": 963,
+        "glyphs": 1619,
+        "actualContentLanguages": [
+          "tr",
+          "en",
+          "de",
+          "ru"
+        ],
+        "shapingFeaturesPreserved": true
+      },
       "license": "/fonts/Inter-OFL.txt"
     },
     {
       "name": "NotoSansArabic",
       "url": "/fonts/NotoSansArabic.woff2",
       "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/notosansarabic/NotoSansArabic%5Bwdth%2Cwght%5D.ttf",
-      "bytes": 361252,
-      "sha256": "278b543605c39f576daf64fc172c74b47674a5feb3c529594992edca9c5855f9",
+      "bytes": 203736,
+      "sha256": "0710b8828e3ba472cddacf8073e78a0d074664a636ac7ba976c5bb45a8b68a46",
       "sourceTtfUrl": "/fonts/NotoSansArabic.ttf",
       "sourceTtfBytes": 844676,
       "sourceTtfSha256": "63111b5b2e074dd48cc67692e0a2726d86ee94c1c37fe8598257b7b4e87e869e",
@@ -410,18 +430,39 @@
           "min": 100.0,
           "default": 400.0,
           "max": 900.0
-        },
-        {
-          "tag": "wdth",
-          "min": 62.5,
-          "default": 100.0,
-          "max": 100.0
         }
       ],
       "verifiedCharacters": "العربية",
+      "optimization": {
+        "fixedAxes": {
+          "wdth": 100
+        },
+        "retainedUnicodeRanges": [
+          "U+0000-024F",
+          "U+2000-206F",
+          "U+20A0-20CF",
+          "U+2190-21FF",
+          "U+2200-22FF",
+          "U+25A0-25FF",
+          "U+2700-27BF",
+          "U+0600-06FF",
+          "U+0750-077F",
+          "U+0870-089F",
+          "U+08A0-08FF",
+          "U+FB50-FDFF",
+          "U+FE70-FEFF",
+          "U+10EC0-10EFF"
+        ],
+        "requiredCharactersVerified": 1525,
+        "glyphs": 1683,
+        "actualContentLanguages": [
+          "ar"
+        ],
+        "shapingFeaturesPreserved": true
+      },
       "license": "/fonts/NotoSansArabic-OFL.txt"
     }
   ],
-  "servedAssetBytes": 94886188,
-  "totalBytes": 96622347
+  "servedAssetBytes": 94506820,
+  "totalBytes": 96242979
 }

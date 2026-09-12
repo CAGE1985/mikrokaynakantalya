@@ -141,7 +141,7 @@ export function Header({
             alt="Platin Antalya"
             width={1200}
             height={400}
-            priority
+            loading="eager"
             sizes="(max-width: 600px) 135px, 164px"
           />
         </a>
@@ -161,7 +161,7 @@ export function Header({
             <button
               ref={languageButton}
               className="language-toggle"
-              aria-label={nav.language}
+              aria-label={`${nav.language} (${locale.toUpperCase()})`}
               aria-expanded={language}
               aria-controls="language-list"
               onClick={() => setLanguage(!language)}

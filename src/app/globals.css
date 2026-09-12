@@ -3,7 +3,7 @@
 :root {
   --paper: #f6f3ed;
   --ink: #28241f;
-  --muted: #726b62;
+  --muted: #665e55;
   --bronze: #89664d;
   --line: #ddd6cc;
   --cream: #eae3d8;
@@ -540,7 +540,7 @@ section[id],
   font-size: 10px;
   font-weight: 500;
   letter-spacing: 0.21em;
-  color: #786554;
+  color: #6e5b49;
 }
 .brand-strip span:nth-child(even) {
   font-size: 7px;
@@ -2652,5 +2652,25 @@ html[dir="rtl"] .contact-phone {
   }
   .hero-visual {
     aspect-ratio: 1/1.15;
+  }
+}
+
+/* Small bronze text keeps contrast on the tinted section backgrounds. */
+.hair-group-title > span,
+.faq-group > h3 > span,
+.faq-index a > span {
+  color: #79583f;
+}
+
+/* Section padding already creates the breathing room below the sticky header. */
+html {
+  scroll-padding-top: 0;
+}
+section[id] {
+  scroll-margin-top: 0;
+}
+@media (max-width: 700px) {
+  section[id] {
+    scroll-margin-top: 28px;
   }
 }
