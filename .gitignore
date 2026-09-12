@@ -1,4 +1,6 @@
-# Publish only the website source, public assets and build configuration.
+# GITHUB'A GONDERILECEK: yalnizca site kodu, web medyasi ve derleme ayarlari.
+# Yeni kok dosyalari varsayilan olarak yereldir; gerekli site dosyalarini
+# asagidaki izin listesine bilincli olarak ekleyin.
 /*
 !/.gitignore
 !/.vercelignore
@@ -11,8 +13,17 @@
 !/src/
 !/public/
 
-# Local originals and media preparation inventory are not website assets.
+# GIT PUSH YAPILMAYACAK: planlar, ajan rehberleri, ham medya ve araclar.
+# Ayrintili politika: YEREL-CALISMA/GIT-DOSYA-POLITIKASI.md (yerel).
+/YEREL-CALISMA/
+/AGENTS.md
+/CLAUDE.md
+/README.md
+
+# Yerel dosyalar yanlislikla src/public altina tasinsa da yayinlanmasin.
 /public/fonts/*.ttf
 /public/media/manifest.json
+**/.env
+**/.env.*
 **/.DS_Store
 **/*.md

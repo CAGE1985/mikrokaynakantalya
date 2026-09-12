@@ -1,3 +1,17 @@
+# Yerel calisma arsivi, orijinaller ve ajan belgeleri deploy edilmez.
+YEREL-CALISMA/
+AGENTS.md
+CLAUDE.md
+README.md
+# Yerel bagimlilik ve derleme ciktilari Vercel tarafinda yeniden olusur.
+node_modules/
+.next/
+.git/
+.env
+.env.*
+*.tsbuildinfo
+**/.DS_Store
+# Eski klasorler tekrar olusturulursa da disarida kalsin.
 GELEN-GORSELLER/
 GELEN-VIDEOLAR/
 .araclar/
