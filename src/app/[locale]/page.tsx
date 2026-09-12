@@ -20,6 +20,10 @@ import { Header } from "@/components/header";
 import { Gallery } from "@/components/gallery";
 import { VideoCard } from "@/components/video-card";
 import { Reveal } from "@/components/reveal";
+import { HairGroups } from "@/components/hair-groups";
+import { getHairDetails } from "@/content/hair-details";
+import { getGalleryCases } from "@/content/gallery-cases";
+import type { FaqAction } from "@/content/types";
 
 type Props = { params: Promise<{ locale: string }> };
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -79,11 +83,21 @@ const eyebrow = (text: string) => (
     {text}
   </p>
 );
+const faqDestinations: Record<FaqAction, string> = {
+  consult: links.consultation,
+  calculate: links.calculator,
+  book: links.booking,
+  whatsapp: links.whatsapp,
+  call: links.phone,
+  directions: links.directions,
+};
 export default async function Home({ params }: Props) {
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
   setRequestLocale(locale);
   const c = await getContent(locale);
+  const hairDetails = await getHairDetails(locale);
+  const galleryCases = getGalleryCases(locale);
   const businessId = "https://www.platinantalya.com/#salon";
   const structuredData = {
     "@context": "https://schema.org",
@@ -195,7 +209,10 @@ export default async function Home({ params }: Props) {
                 {c.actions.consult}
                 <ArrowUpRight size={19} />
               </a>
-              <a className="text-link" href="#donusumler">
+              <a
+                className="button button-outline hero-discover"
+                href="#donusumler"
+              >
                 {c.actions.discover}
                 <ArrowDown size={16} />
               </a>
@@ -264,7 +281,12 @@ export default async function Home({ params }: Props) {
             </div>
             <p>{c.gallery.description}</p>
           </div>
-          <Gallery copy={c.gallery} ui={c.ui} />
+          <Gallery
+            copy={c.gallery}
+            ui={c.ui}
+            cases={galleryCases}
+            locale={locale}
+          />
         </section>
 
         <section id="mikro-kaynak" className="section intro-section">
@@ -276,7 +298,7 @@ export default async function Home({ params }: Props) {
             <div className="intro-image" data-reveal>
               <Image
                 src="/media/photos/uygulama-09-sonra.jpg"
-                alt={`${c.gallery.application} 09 · ${c.gallery.after}`}
+                alt={galleryCases[8].afterAlt}
                 width={1320}
                 height={2340}
                 sizes="(max-width: 700px) 90vw, 35vw"
@@ -367,7 +389,7 @@ export default async function Home({ params }: Props) {
           </div>
         </section>
 
-        <section className="hair-section">
+        <section id="sac-secimi" className="hair-section">
           <div className="section">
             <div className="section-heading" data-reveal>
               <div>
@@ -376,34 +398,11 @@ export default async function Home({ params }: Props) {
               </div>
               <p>{c.hair.description}</p>
             </div>
-            <div className="hair-groups">
-              {c.hair.groups.map((name, i) => (
-                <div
-                  className={`hair-group hair-group-${i}`}
-                  key={name}
-                  data-reveal
-                >
-                  <div className="hair-art" aria-hidden="true">
-                    <svg viewBox="0 0 300 230" fill="none">
-                      {Array.from({ length: 32 }, (_, n) => (
-                        <path
-                          key={n}
-                          d={`M ${40 + n * 6} -20 C ${-40 + n * 7} 90, ${155 + n * 5} 150, ${95 + n * 7} 255`}
-                          stroke="currentColor"
-                          strokeWidth={1 + (n % 3) * 0.25}
-                          opacity={0.25 + (n % 4) * 0.15}
-                        />
-                      ))}
-                    </svg>
-                  </div>
-                  <div className="hair-group-title">
-                    <span>0{i + 1}</span>
-                    <h3>{name}</h3>
-                    <ArrowUpRight size={18} />
-                  </div>
-                </div>
-              ))}
-            </div>
+            <HairGroups
+              details={hairDetails}
+              note={c.hair.note}
+              consult={c.actions.consult}
+            />
             <p className="caption">{c.hair.note}</p>
           </div>
         </section>
@@ -441,8 +440,23 @@ export default async function Home({ params }: Props) {
               <p className="lead">{c.price.description}</p>
             </div>
             <div className="price-panel" data-reveal>
-              <div className="price-symbol" aria-hidden="true">
-                ✳
+              <div className="price-hair" aria-hidden="true">
+                <svg viewBox="0 0 340 115" fill="none">
+                  <path
+                    d="M12 21 L34 27 L30 42 L8 36 Z"
+                    fill="currentColor"
+                    opacity=".65"
+                  />
+                  {Array.from({ length: 24 }, (_, i) => (
+                    <path
+                      key={i}
+                      d={`M ${27 + i * 0.2} ${28 + i * 0.54} C ${88 + i * 1.5} ${14 + i * 1.8}, ${112 + i * 1.9} ${103 - i * 0.6}, ${182 + i * 5.7} ${64 + Math.sin(i * 0.9) * 13}`}
+                      stroke="currentColor"
+                      strokeWidth={0.6 + (i % 3) * 0.18}
+                      opacity={0.28 + (i % 5) * 0.13}
+                    />
+                  ))}
+                </svg>
               </div>
               <ul>
                 {c.price.factors.map((factor, i) => (
@@ -544,13 +558,40 @@ export default async function Home({ params }: Props) {
                     {group.title}
                   </h3>
                   {group.items.map((item) => (
-                    <details key={item.q}>
+                    <details key={item.q} name="mikro-kaynak-faq">
                       <summary>
                         {item.q}
                         <Plus size={19} />
                       </summary>
                       <div className="faq-answer">
                         <p>{item.a}</p>
+                        {item.actions && (
+                          <div className="faq-actions">
+                            {item.actions.map((action) => (
+                              <a
+                                key={action}
+                                href={faqDestinations[action]}
+                                className="button button-outline"
+                              >
+                                <span>
+                                  {c.actions[action]}
+                                  {action === "call" && (
+                                    <bdi className="faq-phone">
+                                      {phoneDisplay}
+                                    </bdi>
+                                  )}
+                                </span>
+                                {action === "call" ? (
+                                  <Phone size={16} />
+                                ) : action === "directions" ? (
+                                  <MapPin size={16} />
+                                ) : (
+                                  <ArrowUpRight size={16} />
+                                )}
+                              </a>
+                            ))}
+                          </div>
+                        )}
                       </div>
                     </details>
                   ))}

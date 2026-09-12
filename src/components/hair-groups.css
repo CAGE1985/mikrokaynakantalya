@@ -1,0 +1,237 @@
+.hair-group-interactive {
+  position: relative;
+}
+.hair-group-copy {
+  min-width: 0;
+  flex: 1;
+}
+.hair-detail-trigger {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 44px;
+  padding: 4px 0 0;
+  color: #79583f;
+  font-size: 12px;
+  font-weight: 550;
+  text-align: start;
+}
+.hair-detail-trigger::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 5px;
+}
+.hair-group-interactive:has(:focus-visible) {
+  outline: 2px solid var(--bronze);
+  outline-offset: 6px;
+}
+.hair-detail-trigger:focus-visible {
+  outline: none;
+}
+.hair-group-interactive .hair-art svg {
+  transition: transform 0.45s ease;
+}
+.hair-group-interactive:hover .hair-art svg {
+  transform: scale(1.055);
+}
+.hair-group-interactive:hover .hair-detail-trigger {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.hair-group-title .hair-detail-trigger svg {
+  margin-inline-start: 0;
+}
+.hair-dialog {
+  padding: 0;
+  margin: auto;
+  border: 1px solid #d4c8b9;
+  border-radius: 14px;
+  width: min(780px, calc(100vw - 48px));
+  max-width: none;
+  max-height: min(900px, calc(100dvh - 64px));
+  background: var(--paper);
+  color: var(--ink);
+  overflow: hidden;
+  box-shadow: 0 24px 90px #0004;
+}
+.hair-dialog[open] {
+  display: flex;
+  flex-direction: column;
+  animation: hair-dialog-in 0.22s ease-out;
+}
+.hair-dialog::backdrop {
+  background: #201b16b3;
+  backdrop-filter: blur(6px);
+}
+.hair-dialog-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 26px 36px;
+  border-bottom: 1px solid var(--line);
+  background: #eee7dd;
+  flex-shrink: 0;
+}
+.hair-dialog-brand {
+  color: #79583f;
+  font-size: 9px;
+  letter-spacing: 0.16em;
+  margin-bottom: 10px;
+}
+.hair-dialog-brand span {
+  margin-inline: 8px;
+}
+.hair-dialog-header h2 {
+  font-size: clamp(26px, 4vw, 38px);
+  letter-spacing: -0.04em;
+  line-height: 1.15;
+}
+.hair-dialog-close {
+  flex-shrink: 0;
+  background: var(--paper);
+  color: var(--ink);
+}
+.hair-dialog-body {
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 30px 36px 36px;
+  min-height: 0;
+}
+.hair-dialog-body p {
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--muted);
+  margin-top: 12px;
+}
+.hair-dialog .hair-dialog-intro-title {
+  font-size: 21px;
+  margin-bottom: 14px;
+  line-height: 1.4;
+}
+.hair-dialog .hair-features-heading {
+  font-size: 18px;
+  margin-block: 34px 18px;
+  line-height: 1.45;
+}
+.hair-features {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.hair-features li {
+  display: grid;
+  grid-template-columns: 26px 1fr;
+  gap: 18px;
+  padding-block: 22px;
+  border-top: 1px solid var(--line);
+}
+.hair-feature-number {
+  color: #79583f;
+  font-size: 11px;
+  padding-top: 5px;
+}
+.hair-features h4 {
+  font-size: 17px;
+  font-weight: 550;
+  line-height: 1.45;
+}
+.hair-features li p {
+  margin-top: 8px;
+}
+.hair-dialog-summary {
+  padding: 24px;
+  margin-top: 20px;
+  border-radius: 6px;
+  background: #eae3d8;
+}
+.hair-dialog-summary h3 {
+  font-size: 19px;
+  line-height: 1.45;
+}
+.hair-dialog-footer {
+  padding-top: 20px;
+}
+.hair-dialog-footer p {
+  font-size: 12px;
+  margin-block: 0 24px;
+}
+.hair-dialog-footer .button {
+  width: 100%;
+  justify-content: space-between;
+}
+@keyframes hair-dialog-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@media (max-width: 700px) {
+  .hair-group-interactive .hair-group-title {
+    align-items: flex-start;
+    gap: 10px;
+    flex-wrap: nowrap;
+  }
+  .hair-group-interactive .hair-group-title > span {
+    padding-top: 7px;
+  }
+  .hair-group-interactive .hair-group-title h3 {
+    font-size: clamp(20px, 5.5vw, 24px);
+    min-width: 0;
+  }
+  .hair-detail-trigger {
+    font-size: 12px;
+  }
+  .hair-dialog {
+    width: calc(100vw - 20px);
+    max-height: calc(100dvh - 24px);
+    border-radius: 12px;
+  }
+  .hair-dialog-header {
+    padding: 20px;
+    gap: 12px;
+  }
+  .hair-dialog-brand {
+    font-size: 8px;
+    letter-spacing: 0.1em;
+  }
+  .hair-dialog-header h2 {
+    font-size: 27px;
+  }
+  .hair-dialog-body {
+    padding: 24px 20px;
+  }
+  .hair-dialog-body p {
+    font-size: 14px;
+    line-height: 1.8;
+  }
+  .hair-dialog .hair-dialog-intro-title {
+    font-size: 19px;
+  }
+  .hair-features li {
+    gap: 10px;
+    grid-template-columns: 22px 1fr;
+  }
+  .hair-features h4 {
+    font-size: 16px;
+  }
+  .hair-dialog-summary {
+    padding: 19px;
+  }
+  .hair-dialog-footer p {
+    font-size: 12px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hair-dialog[open] {
+    animation: none;
+  }
+  .hair-group-interactive .hair-art svg {
+    transition: none;
+  }
+}

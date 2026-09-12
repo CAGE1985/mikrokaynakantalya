@@ -1,3 +1,6 @@
+export type FaqAction =
+  "consult" | "calculate" | "book" | "whatsapp" | "call" | "directions";
+
 export type Content = {
   meta: { title: string; description: string };
   nav: {
@@ -107,7 +110,10 @@ export type Content = {
     eyebrow: string;
     title: string;
     description: string;
-    groups: { title: string; items: { q: string; a: string }[] }[];
+    groups: {
+      title: string;
+      items: { q: string; a: string; actions?: FaqAction[] }[];
+    }[];
   };
   contact: {
     eyebrow: string;

@@ -23,6 +23,8 @@ Dil adresleri: `/` Türkçe, `/en` İngilizce, `/ru` Rusça, `/de` Almanca, `/ar
 ## İçerik ve medya
 
 - `src/content/tr.ts`: Türkçe ana içerik; diğer dört dosya eşdeğer çeviriler. Her dilde 26 SSS bulunur.
+- `src/content/hair-details`: Hesaplama aracından alınan üç saç grubunun beş dilde bilgi pencereleri; kaynak ve aktarım notları `SAC-GRUBU-KAYNAK.md`.
+- `src/content/gallery-cases.ts`: Görsel olarak eşleştirilmiş dokuz uygulamanın beş dilde açıklamaları ve ayrı öncesi/sonrası alt metinleri. Kaynak eşleştirmesi `GALERI-ACIKLAMALARI.md`.
 - `src/lib/site.ts`: doğrulanmış randevu, ücretsiz ön görüşme, hesaplayıcı, telefon, harita ve sosyal bağlantıları.
 - `src/app/[locale]/page.tsx`: sunucuda üretilen sayfa ve yapılandırılmış veri.
 - `src/app/globals.css`: responsive tasarım, marka renkleri ve hareket tercihleri.
@@ -33,6 +35,10 @@ Dil adresleri: `/` Türkçe, `/en` İngilizce, `/ru` Rusça, `/de` Almanca, `/ar
 - Kaynak dosyalar `GELEN-GORSELLER` ve `GELEN-VIDEOLAR` içinde yerel olarak korunur; büyük orijinaller GitHub/Vercel'e gönderilmez. `scripts/prepare-media.py` web kopyalarını tekrar oluşturur; ayrıntılar `MEDYA-HAZIRLIK.md`.
 
 Öncesi/sonrası etiketleri fotoğraflara gömülmez; arayüzde beş dilde gösterilir. Gerçek sonuç fotoğraflarının saç görünümü değiştirilmez. Örnek uygulamaların gerçek gramaj, santimetre, müşteri adı veya yorumu verilmediği için üretilmez.
+
+Tam ekran galeride dokuz çift oklar, klavye ve mobil kaydırmayla birlikte ilerler. Arapçada yönler uyarlanır; yakınlaştırma hareketi korunur. Aktif açıklama hem galeri altında hem tam ekranda görünür. Dokuz uygulamanın fotoğraflı açıklama listesi ilk HTML içinde, kullanıcı tarafından açılabilir bir bölümde yer alır.
+
+SSS tek-açık-cevap düzenindedir. Fiyat, ön görüşme, randevu ve konum cevaplarının içinde ilgili işlem bağlantıları vardır. Kullanıcının 12 Eylül 2026 tarihli bilgisiyle ortalama kullanım süresi **3–6 ay**, kalite grubuna/bakıma bağlı yeniden kullanım **2–4 kez** olarak beş dile işlendi; bireysel kontrol ve uygunluk değerlendirmesi korunur.
 
 Anlatımlı iki video Türkçedir ve orijinal gömülü Türkçe yazıları içerir. Başlık/açıklamalar beş dilde mevcuttur; çevrilmiş ses veya altyazı varmış gibi gösterilmez. Bu sürümde ek VTT altyazı dosyası bulunmaz. Videolar ilk HTML'de keşfedilebilir, `preload="none"` ile oynatma talebine kadar indirilmez. Dönüşüm videosu yalnız seçildiğinde yüklenir.
 
@@ -50,6 +56,8 @@ Search Console doğrulama, site haritası gönderimi ve gerçek dönüşüm anal
 npm run check
 node tests/mobile-qa.mjs
 QA_MODE=focus node tests/mobile-qa.mjs
+QA_BASE_URL=http://localhost:3013 node tests/hair-faq-qa.mjs
+QA_BASE_URL=http://localhost:3013 node tests/gallery-detail-qa.mjs
 ```
 
 Tarayıcı testleri Playwright Chromium gerektirir. Gerekirse `npx playwright install chromium` kullanın. Test varsayılanı `http://localhost:3012`; `QA_BASE_URL` ile değiştirilebilir. Testler gerçek randevu oluşturmaz ve dış sistemlere kişisel bilgi göndermez. Sonuçlar `tests/MOBILE-QA.md` ve `tests/MOBILE-QA-RECHECK.md` dosyalarında. Mobil hedefli tekrar kontrolü 250/250 geçti. Son üretim axe denetimi TR390 / AR390 / TR1280 için sıfır otomatik ihlal buldu; `tests/accessibility-qa-report.md`. Bu otomatik sonuç tam WCAG uygunluk beyanı değildir.

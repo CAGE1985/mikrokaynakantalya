@@ -297,11 +297,11 @@ export const de: Content = {
         items: [
           {
             q: "Wie viele Monate kann ich Micro-Bonding-Extensions tragen?",
-            a: "Es gibt keine einheitliche Tragedauer für alle. Haarwachstum, Zustand der Verbindungen, verwendetes Haar und Pflegegewohnheiten beeinflussen die Kontrollabstände. Den Zeitpunkt für ein erneutes Einsetzen bestimmen wir bei der individuellen Nachbetreuung.",
+            a: "Die durchschnittliche Tragedauer von Micro-Bonding-Extensions beträgt 3–6 Monate. Sie kann je nach Haarwachstum, Zustand der Verbindungen und Pflegegewohnheiten variieren. Ihre persönlichen Kontroll- und Auffrischungstermine legen wir bei der Haaranalyse und Nachbetreuung fest.",
           },
           {
             q: "Kann dasselbe Extensions-Haar wiederverwendet werden?",
-            a: "Wir beurteilen den Zustand von Haar und Verbindungen, die Eigenschaften der gewählten Haarserie und die bisherige Pflege. Eine Wiederverwendung ist nicht nach jeder Anwendung automatisch möglich. Das klären wir bei der Kontrolle.",
+            a: "Dasselbe Extensions-Haar kann je nach Qualitätsserie und Pflege durchschnittlich 2–4 Mal wiederverwendet werden. Vor jedem erneuten Einsetzen prüfen wir den Zustand von Haar und Verbindungen, um die Eignung zur Wiederverwendung zu bestätigen.",
           },
           {
             q: "Kann ich Micro-Bonding-Extensions zu Hause entfernen?",
@@ -319,18 +319,22 @@ export const de: Content = {
           {
             q: "Wie wird der Preis für Micro-Bonding-Extensions in Antalya berechnet?",
             a: "Haarserie, Farbe, Länge, Gesamtmenge und Leistungsumfang beeinflussen den Preis. Unser Rechner bietet eine erste Kostenschätzung, mit der Sie Ihre Möglichkeiten vergleichen können. Der endgültige Preis wird nach der Haaranalyse festgelegt.",
+            actions: ["calculate"],
           },
           {
             q: "Was erfahre ich bei der kostenlosen Beratung?",
             a: "Gemeinsam besprechen wir die Eignung Ihres Haares, passende Haaroptionen, die geplante Menge, den Leistungsumfang, die Dauer und den Preis. Auch den Pflegebedarf klären wir vor dem Beginn.",
+            actions: ["consult"],
           },
           {
             q: "Wie kann ich einen Termin buchen?",
             a: "Die Schaltflächen für die kostenlose Beratung und die Online-Terminbuchung öffnen das bestehende Buchungssystem von Platin Antalya. Sie können uns auch per WhatsApp oder telefonisch erreichen.",
+            actions: ["book", "consult", "whatsapp", "call"],
           },
           {
             q: "Wo befindet sich der Salon in Antalya?",
-            a: "Sie finden uns in der Fener Mahallesi, Bülent Ecevit Bulvarı, Bulvar Lara 43B, Muratpaşa / Antalya. Über den Routenlink im Kontaktbereich können Sie unseren Standort öffnen.",
+            a: "Sie finden uns in der Fener Mahallesi, Bülent Ecevit Bulvarı, Bulvar Lara 43B, Muratpaşa / Antalya. Über die Schaltfläche für die Wegbeschreibung unten öffnen Sie unseren Standort auf der Karte.",
+            actions: ["directions"],
           },
         ],
       },

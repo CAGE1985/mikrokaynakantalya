@@ -294,11 +294,11 @@ export const tr: Content = {
         items: [
           {
             q: "Mikro kaynak kaç ay kullanılabilir?",
-            a: "Herkes için tek bir süre doğru değildir. Saçın uzama hızı, bağlantıların durumu, kullanılan saç ve bakım alışkanlıkları kontrol aralığını etkiler. Yenileme zamanını kişisel takipte belirliyoruz.",
+            a: "Mikro kaynak kullanım süresi ortalama 3–6 aydır. Saçın uzama hızı, bağlantıların durumu ve bakım alışkanlıklarına göre bu süre değişebilir. Size uygun kontrol ve yenileme zamanını saç analizi ve takip sırasında belirliyoruz.",
           },
           {
             q: "Aynı kaynak saç tekrar kullanılabilir mi?",
-            a: "Saçın ve bağlantıların durumu, seçilen saç grubunun özellikleri ve bakım geçmişi değerlendirilir. Yeniden kullanım her uygulamada otomatik olarak mümkün değildir; kontrol sırasında netleştirilir.",
+            a: "Aynı kaynak saç, seçilen kalite grubuna ve bakımına bağlı olarak ortalama 2–4 kez yeniden kullanılabilir. Her yeniden uygulama öncesinde saçın ve bağlantıların durumu değerlendirilir; uygunluk kontrol sırasında netleştirilir.",
           },
           {
             q: "Mikro kaynağı evde çıkarabilir miyim?",
@@ -316,18 +316,22 @@ export const tr: Content = {
           {
             q: "Antalya’da mikro kaynak fiyatı nasıl belirlenir?",
             a: "Seçilen saç grubu, renk, uzunluk, toplam miktar ve işlem kapsamı fiyatı etkiler. Hesaplama aracımız seçenekleri değerlendirmek için ön tahmin sunar; kesin fiyat saç analizinden sonra belirlenir.",
+            actions: ["calculate"],
           },
           {
             q: "Ücretsiz ön görüşmede neleri öğrenirim?",
             a: "Saçınızın uygulamaya uygunluğunu, hedefinize uygun saç seçeneklerini, planlanan miktarı, işlem kapsamını, süreyi ve fiyatı birlikte değerlendirirsiniz. Bakım beklentilerini de başlamadan önce konuşuruz.",
+            actions: ["consult"],
           },
           {
             q: "Randevuyu nereden alabilirim?",
             a: "Ücretsiz ön görüşme veya online randevu düğmeleri Platin Antalya’nın mevcut rezervasyon sistemini açar. WhatsApp ve telefon üzerinden de bizimle iletişim kurabilirsiniz.",
+            actions: ["book", "consult", "whatsapp", "call"],
           },
           {
             q: "Salon Antalya’nın neresinde?",
-            a: "Fener Mahallesi, Bülent Ecevit Bulvarı, Bulvar Lara 43B, Muratpaşa / Antalya adresindeyiz. Sayfanın iletişim bölümündeki yol tarifi bağlantısıyla konumumuzu açabilirsiniz.",
+            a: "Fener Mahallesi, Bülent Ecevit Bulvarı, Bulvar Lara 43B, Muratpaşa / Antalya adresindeyiz. Aşağıdaki yol tarifi butonuyla konumumuzu haritada açabilirsiniz.",
+            actions: ["directions"],
           },
         ],
       },

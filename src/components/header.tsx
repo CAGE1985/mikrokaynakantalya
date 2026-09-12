@@ -21,6 +21,13 @@ const nativeNames: Record<Locale, string> = {
   de: "Deutsch",
   ar: "العربية",
 };
+const flags: Record<Locale, string> = {
+  tr: "🇹🇷",
+  en: "🇬🇧",
+  ru: "🇷🇺",
+  de: "🇩🇪",
+  ar: "🇸🇦",
+};
 export function Header({
   locale,
   nav,
@@ -166,6 +173,9 @@ export function Header({
               aria-controls="language-list"
               onClick={() => setLanguage(!language)}
             >
+              <span className="language-flag" aria-hidden="true">
+                {flags[locale]}
+              </span>
               {locale.toUpperCase()}
               <ChevronDown size={12} />
             </button>
@@ -186,7 +196,12 @@ export function Header({
                       hrefLang={key}
                       aria-current={key === locale ? "page" : undefined}
                     >
-                      {name}
+                      <span className="language-name">
+                        <span className="language-flag" aria-hidden="true">
+                          {flags[key as Locale]}
+                        </span>
+                        {name}
+                      </span>
                       {key === locale && <Check size={14} />}
                     </a>
                   ))}

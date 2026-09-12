@@ -293,11 +293,11 @@ export const en: Content = {
         items: [
           {
             q: "How many months can I wear micro bond extensions?",
-            a: "There is no single duration that suits everyone. Your hair’s growth rate, bond condition, extension hair and care habits affect check-up intervals. We agree on refitting timing through individual follow-up.",
+            a: "Micro bond extensions are typically worn for 3–6 months. This can vary with your hair’s growth rate, the condition of the bonds and your care routine. We determine your individual check-up and refitting schedule during assessment and follow-up.",
           },
           {
             q: "Can the same extension hair be reused?",
-            a: "We assess the condition of the hair and bonds, the properties of your chosen hair range and its care history. Reuse is not automatically possible after every application; this is clarified at a check-up.",
+            a: "The same extension hair can typically be reused 2–4 times, depending on the quality range and how it is cared for. Before each refitting, we assess the condition of the hair and bonds to confirm whether it is suitable for reuse.",
           },
           {
             q: "Can I remove micro bond extensions at home?",
@@ -315,18 +315,22 @@ export const en: Content = {
           {
             q: "How is the price of micro bond extensions in Antalya calculated?",
             a: "The hair range, colour, length, total quantity and scope of the service affect the price. Our calculator offers a preliminary estimate to help you explore your options. The final price is determined after a hair assessment.",
+            actions: ["calculate"],
           },
           {
             q: "What will I learn at my free consultation?",
             a: "Together, we assess suitability, hair options for your desired look, the planned quantity, scope of the service, duration and price. We also discuss aftercare expectations before you begin.",
+            actions: ["consult"],
           },
           {
             q: "How can I book an appointment?",
             a: "The free consultation and online booking buttons open Platin Antalya’s existing booking system. You can also contact us by WhatsApp or phone.",
+            actions: ["book", "consult", "whatsapp", "call"],
           },
           {
             q: "Where is the salon in Antalya?",
-            a: "You will find us at Fener Mahallesi, Bülent Ecevit Bulvarı, Bulvar Lara 43B, Muratpaşa / Antalya. Open our location using the directions link in the contact section.",
+            a: "You will find us at Fener Mahallesi, Bülent Ecevit Bulvarı, Bulvar Lara 43B, Muratpaşa / Antalya. Use the directions button below to open our location on the map.",
+            actions: ["directions"],
           },
         ],
       },
