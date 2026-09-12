@@ -91,9 +91,11 @@
   position: absolute;
   inset-inline-start: 8px;
   top: 8px;
-  padding: 4px 7px;
+  padding: 4px 8px;
   border-radius: 2px;
-  font-size: 8px;
+  font-size: 10px;
+  font-weight: 550;
+  letter-spacing: 0.02em;
   background: #f6f3edf0;
   color: var(--ink);
 }
@@ -105,13 +107,13 @@
   margin: 8px 0 10px;
 }
 .gallery-with-details .gallery-case-list p {
-  font-size: 12px;
+  font-size: 13px;
   color: var(--muted);
   line-height: 1.8;
 }
 .gallery-with-details .gallery-case-list .text-link {
   margin-top: 10px;
-  font-size: 11px;
+  font-size: 12.5px;
   padding-inline: 0;
 }
 .gallery-with-details .gallery-dialog.gallery-detail-dialog {

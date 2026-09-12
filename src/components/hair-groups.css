@@ -12,8 +12,9 @@
   min-height: 44px;
   padding: 4px 0 0;
   color: #79583f;
-  font-size: 12px;
+  font-size: 13.5px;
   font-weight: 550;
+  letter-spacing: 0.01em;
   text-align: start;
 }
 .hair-detail-trigger::after {

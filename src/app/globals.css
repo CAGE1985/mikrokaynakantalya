@@ -84,8 +84,8 @@ h1,
 h2,
 h3 {
   font-weight: 500;
-  letter-spacing: -0.055em;
-  line-height: 1.08;
+  letter-spacing: -0.03em;
+  line-height: 1.12;
   text-wrap: balance;
 }
 h2 {
@@ -93,13 +93,13 @@ h2 {
 }
 h3 {
   font-size: 25px;
-  letter-spacing: -0.035em;
+  letter-spacing: -0.02em;
 }
 html[lang="ar"] h1,
 html[lang="ar"] h2,
 html[lang="ar"] h3 {
   letter-spacing: 0;
-  line-height: 1.35;
+  line-height: 1.55;
 }
 svg {
   flex-shrink: 0;
@@ -121,10 +121,10 @@ section[id],
   display: flex;
   gap: 10px;
   align-items: center;
-  font-size: 10px;
+  font-size: 11px;
   line-height: 1.6;
   font-weight: 600;
-  letter-spacing: 0.17em;
+  letter-spacing: 0.16em;
   margin-bottom: 26px;
   text-transform: uppercase;
 }
@@ -141,7 +141,7 @@ section[id],
   color: var(--muted);
 }
 .caption {
-  font-size: 12px;
+  font-size: 13px;
   line-height: 1.7;
   color: var(--muted);
 }
@@ -149,31 +149,43 @@ section[id],
   color: var(--muted);
 }
 .button {
-  min-height: 54px;
+  min-height: 52px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 22px;
+  gap: 14px;
   background: var(--bronze);
   color: white;
   border-radius: 4px;
-  padding: 17px 25px;
-  font-size: 12px;
+  padding: 15px 24px;
+  font-size: 14px;
   line-height: 1.45;
   font-weight: 500;
+  letter-spacing: 0.01em;
   transition:
-    background 0.25s,
-    transform 0.25s;
+    background 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+.button svg {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .button:hover {
   background: #715039;
   transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(113, 80, 57, 0.18);
+}
+.button:hover svg {
+  transform: translate(2px, -2px);
+}
+.button-outline.hero-discover:hover svg {
+  transform: translateY(3px);
 }
 .button-small {
-  min-height: 43px;
-  padding: 12px 16px;
-  gap: 14px;
-  font-size: 10px;
+  min-height: 42px;
+  padding: 10px 18px;
+  gap: 10px;
+  font-size: 12.5px;
 }
 .button-light {
   background: var(--paper);
@@ -386,16 +398,22 @@ section[id],
 }
 .desktop-nav {
   display: flex;
-  gap: 25px;
+  gap: 26px;
   align-items: center;
 }
 .desktop-nav a {
-  font-size: 11px;
+  font-size: 13.5px;
+  font-weight: 450;
+  letter-spacing: 0.015em;
   min-height: 44px;
   display: flex;
   align-items: center;
   position: relative;
   white-space: nowrap;
+  transition: color 0.2s ease;
+}
+.desktop-nav a:hover {
+  color: var(--bronze);
 }
 .desktop-nav a::after {
   content: "";
@@ -424,9 +442,10 @@ section[id],
   height: 44px;
   display: flex;
   align-items: center;
-  gap: 5px;
-  font-size: 11px;
-  font-weight: 600;
+  gap: 6px;
+  font-size: 12.5px;
+  font-weight: 550;
+  letter-spacing: 0.02em;
   position: relative;
   z-index: 3;
 }
@@ -744,10 +763,23 @@ section[id],
 }
 .expand-icon {
   position: absolute;
-  bottom: 20px;
-  inset-inline-end: 20px;
+  bottom: 16px;
+  inset-inline-end: 16px;
   color: white;
-  filter: drop-shadow(0 1px 4px #000);
+  background: rgba(30, 26, 23, 0.55);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  padding: 9px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+.gallery-pane:hover .expand-icon {
+  transform: scale(1.08);
+  background: rgba(30, 26, 23, 0.8);
 }
 .gallery-stage.is-video {
   display: flex;
@@ -1455,16 +1487,16 @@ section[id],
   gap: 20px;
   padding: 22px 0;
   cursor: pointer;
-  font-size: 14px;
-  font-weight: 450;
-  line-height: 1.65;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.6;
 }
 .faq-group summary::-webkit-details-marker {
   display: none;
 }
 .faq-group summary svg {
   color: var(--bronze);
-  transition: transform 0.25s;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .faq-group details[open] summary svg {
   transform: rotate(45deg);
@@ -1473,9 +1505,9 @@ section[id],
   padding: 0 25px 25px 0;
 }
 .faq-answer p {
-  font-size: 13px;
-  color: #625b52;
-  line-height: 1.9;
+  font-size: 14px;
+  color: #4f4840;
+  line-height: 1.85;
 }
 .contact-section {
   background: #34302a;
@@ -2615,9 +2647,10 @@ section[id],
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 11px;
-    gap: 12px;
-    min-height: 46px;
+    font-size: 13px;
+    font-weight: 550;
+    gap: 10px;
+    min-height: 48px;
     border-radius: 4px;
     padding: 12px 14px;
   }
@@ -2695,7 +2728,8 @@ section[id],
     min-height: 0;
   }
   .mobile-actions > a {
-    font-size: 10px;
+    font-size: 12px;
+    font-weight: 550;
     padding-inline: 10px;
   }
   .mobile-actions > a:first-child {
