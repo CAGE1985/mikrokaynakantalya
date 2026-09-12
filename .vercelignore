@@ -1,0 +1,11 @@
+GELEN-GORSELLER/
+GELEN-VIDEOLAR/
+.araclar/
+.calisma/
+tests/
+test-results/
+playwright-report/
+scripts/
+*.md
+public/fonts/*.ttf
+public/media/manifest.json

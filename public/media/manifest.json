@@ -1,0 +1,427 @@
+{
+  "photosAndLogo": [
+    {
+      "source": "GELEN-GORSELLER/once-sonra/uygulama-01-once.jpg",
+      "url": "/media/photos/uygulama-01-once.jpg",
+      "bytes": 648957,
+      "width": 1320,
+      "height": 2313,
+      "sha256": "1d67a9f63f1fa222e6c083a22c104f3b763960e603e6de41294d21a7e6f39830",
+      "operation": "byte-for-byte copy"
+    },
+    {
+      "source": "GELEN-GORSELLER/once-sonra/uygulama-01-sonra.jpg",
+      "url": "/media/photos/uygulama-01-sonra.jpg",
+      "bytes": 480391,
+      "width": 1320,
+      "height": 2338,
+      "sha256": "4cc2dd765a28a560f283118652fc04ea67f46b2194fe798aa10a34a0ef0a765c",
+      "operation": "byte-for-byte copy"
+    },
+    {
+      "source": "GELEN-GORSELLER/once-sonra/uygulama-02-once.jpg",
+      "url": "/media/photos/uygulama-02-once.jpg",
+      "bytes": 418711,
+      "width": 1320,
+      "height": 2322,
+      "sha256": "e1cf9b08841d4958ee4f3a02bc498639a9f3cebeabfde1c4586dd545fc7d291e",
+      "operation": "byte-for-byte copy"
+    },
+    {
+      "source": "GELEN-GORSELLER/once-sonra/uygulama-02-sonra.jpg",
+      "url": "/media/photos/uygulama-02-sonra.jpg",
+      "bytes": 587813,
+      "width": 1320,
+      "height": 2337,
+      "sha256": "248e6a48cc6cdfaa02ef24ab2caa301d977fb0edbb63a962eb2891e2edc7636c",
+      "operation": "byte-for-byte copy"
+    },
+    {
+      "source": "GELEN-GORSELLER/once-sonra/uygulama-03-once.jpg",
+      "url": "/media/photos/uygulama-03-once.jpg",
+      "bytes": 602634,
+      "width": 1320,
+      "height": 2313,
+      "sha256": "d8d3e0f1c5b8d7d92ff2ae02c51a986b45a6abc70147ebe211ed77526cb57a49",
+      "operation": "byte-for-byte copy"
+    },
+    {
+      "source": "GELEN-GORSELLER/once-sonra/uygulama-03-sonra.jpg",
+      "url": "/media/photos/uygulama-03-sonra.jpg",
+      "bytes": 588521,
+      "width": 1320,
+      "height": 2338,
+      "sha256": "7485007a84fd32a1b0f4c8cb32c8001d91a1cc90ed594230b433a5f2607a5396",
+      "operation": "byte-for-byte copy"
+    },
+    {
+      "source": "GELEN-GORSELLER/once-sonra/uygulama-04-once.jpg",
+      "url": "/media/photos/uygulama-04-once.jpg",
+      "bytes": 448715,
+      "width": 1320,
+      "height": 2308,
+      "sha256": "a183c409bd19b7435a702a7ca4202f6577e0cf3e00c35b3b769b4efb519eced5",
+      "operation": "byte-for-byte copy"
+    },
+    {
+      "source": "GELEN-GORSELLER/once-sonra/uygulama-04-sonra.jpg",
+      "url": "/media/photos/uygulama-04-sonra.jpg",
+      "bytes": 488533,
+      "width": 1320,
+      "height": 2332,
+      "sha256": "72dba4303c6eea2bbf0133d4f93f822df2f67de5ae0d542e2f88b241ddbc397f",
+      "operation": "byte-for-byte copy"
+    },
+    {
+      "source": "GELEN-GORSELLER/once-sonra/uygulama-05-once.jpg",
+      "url": "/media/photos/uygulama-05-once.jpg",
+      "bytes": 440457,
+      "width": 1320,
+      "height": 2322,
+      "sha256": "38a2c51704c9e190f0af55a6904f6603f82efd5c2d20c79e3b5f391003a72aa5",
+      "operation": "byte-for-byte copy"
+    },
+    {
+      "source": "GELEN-GORSELLER/once-sonra/uygulama-05-sonra.jpg",
+      "url": "/media/photos/uygulama-05-sonra.jpg",
+      "bytes": 424374,
+      "width": 1320,
+      "height": 2341,
+      "sha256": "ec128360886c73140fd869b67bcad015dcd37d005aeaadf2fda57d3a45363d42",
+      "operation": "byte-for-byte copy"
+    },
+    {
+      "source": "GELEN-GORSELLER/once-sonra/uygulama-06-once.jpg",
+      "url": "/media/photos/uygulama-06-once.jpg",
+      "bytes": 530412,
+      "width": 1320,
+      "height": 2327,
+      "sha256": "b0b7e46a556529b24df07e89779802cc1d3030e201ac20fdad79716e8bd0db07",
+      "operation": "byte-for-byte copy"
+    },
+    {
+      "source": "GELEN-GORSELLER/once-sonra/uygulama-06-sonra.jpg",
+      "url": "/media/photos/uygulama-06-sonra.jpg",
+      "bytes": 494753,
+      "width": 1320,
+      "height": 2344,
+      "sha256": "7721d3893bb237cce76e8f63fcfd1d0e9dad660717ab9533f2b6a2c9cb52ca18",
+      "operation": "byte-for-byte copy"
+    },
+    {
+      "source": "GELEN-GORSELLER/once-sonra/uygulama-07-once.jpg",
+      "url": "/media/photos/uygulama-07-once.jpg",
+      "bytes": 793617,
+      "width": 1320,
+      "height": 2322,
+      "sha256": "b8e3b9d11c06b7b84e495b3a5f3ed0813f02718cfc1ac2668f6a322b0207b8b9",
+      "operation": "byte-for-byte copy"
+    },
+    {
+      "source": "GELEN-GORSELLER/once-sonra/uygulama-07-sonra.jpg",
+      "url": "/media/photos/uygulama-07-sonra.jpg",
+      "bytes": 418109,
+      "width": 1320,
+      "height": 2332,
+      "sha256": "d74b1f4c1d1c255c92cab91aa41b582de643dc6fa571a323c1a626cdcee88c24",
+      "operation": "byte-for-byte copy"
+    },
+    {
+      "source": "GELEN-GORSELLER/once-sonra/uygulama-08-once.jpg",
+      "url": "/media/photos/uygulama-08-once.jpg",
+      "bytes": 1056101,
+      "width": 1320,
+      "height": 2327,
+      "sha256": "f0e6de8b972b52fcb8bf6fb271d576bbe69a7ce3acf6cf8e5cdb36faacacd930",
+      "operation": "byte-for-byte copy"
+    },
+    {
+      "source": "GELEN-GORSELLER/once-sonra/uygulama-08-sonra.jpg",
+      "url": "/media/photos/uygulama-08-sonra.jpg",
+      "bytes": 442582,
+      "width": 1320,
+      "height": 2308,
+      "sha256": "bec85e311e242b698ba92f0a0c8b1d83166913dbb4639e30a58c73aa20b4f759",
+      "operation": "byte-for-byte copy"
+    },
+    {
+      "source": "GELEN-GORSELLER/once-sonra/uygulama-09-once.jpg",
+      "url": "/media/photos/uygulama-09-once.jpg",
+      "bytes": 1035603,
+      "width": 1320,
+      "height": 2332,
+      "sha256": "657eb697ca25ebbdb94b4c5df7db7c8aaf8b9699713c32c8dfe74935f28f4891",
+      "operation": "byte-for-byte copy"
+    },
+    {
+      "source": "GELEN-GORSELLER/once-sonra/uygulama-09-sonra.jpg",
+      "url": "/media/photos/uygulama-09-sonra.jpg",
+      "bytes": 445392,
+      "width": 1320,
+      "height": 2317,
+      "sha256": "8ef96732e5670c18b2b757995b45160a96e70a0af865f528c075591470d96ff7",
+      "operation": "byte-for-byte copy"
+    },
+    {
+      "source": "GELEN-GORSELLER/marka/platin-antalya-logo.png",
+      "url": "/media/logo.png",
+      "bytes": 64467,
+      "width": 1200,
+      "height": 400,
+      "sha256": "d5a2325ecceb2c4df35249c0418634e6fab1ec9b4a2723038594dc3eddc74f2a",
+      "operation": "byte-for-byte copy"
+    }
+  ],
+  "videos": [
+    {
+      "source": "GELEN-VIDEOLAR/once-sonra/uygulama-01-once-sonra.mov",
+      "sourceBytes": 47169831,
+      "sourceSha256": "e6a974fc1d7cdeeab7162c3763fd22d93fed17b4d772a6d0d6adfd7aa0b49dce",
+      "url": "/media/videos/uygulama-01.mp4",
+      "bytes": 4068581,
+      "sha256": "2bd03aa4bb551c9b784c3a620af3452ccc42932de524f2a15561525439380f79",
+      "width": 720,
+      "height": 1280,
+      "fps": 30,
+      "videoCodec": "h264",
+      "audioCodec": "aac",
+      "faststart": true,
+      "duration": 14.449,
+      "operation": "resize and encode only; no crop, retouch, recolor or generated imagery"
+    },
+    {
+      "source": "GELEN-VIDEOLAR/once-sonra/uygulama-02-once-sonra.mov",
+      "sourceBytes": 47242373,
+      "sourceSha256": "e6c644d08b95af6b59612e9402d2068405c1e63d738953defe4952766f24485d",
+      "url": "/media/videos/uygulama-02.mp4",
+      "bytes": 3976703,
+      "sha256": "f4dc31d1dad1051a9457b85a666341d3fcf30869fcebe64467e0071ea05f5959",
+      "width": 720,
+      "height": 1280,
+      "fps": 30,
+      "videoCodec": "h264",
+      "audioCodec": "aac",
+      "faststart": true,
+      "duration": 14.372,
+      "operation": "resize and encode only; no crop, retouch, recolor or generated imagery"
+    },
+    {
+      "source": "GELEN-VIDEOLAR/once-sonra/uygulama-03-once-sonra.mov",
+      "sourceBytes": 47363042,
+      "sourceSha256": "737f831776c2dd333a2d71cdb83f131cd13a962b3b36abd2a4827e0c3aa05935",
+      "url": "/media/videos/uygulama-03.mp4",
+      "bytes": 3405161,
+      "sha256": "97559b33cf8e5850aa5ce4b58f28ce7360c3d57d784a3c4f0932e0c229ca13b0",
+      "width": 720,
+      "height": 1280,
+      "fps": 30,
+      "videoCodec": "h264",
+      "audioCodec": "aac",
+      "faststart": true,
+      "duration": 14.442,
+      "operation": "resize and encode only; no crop, retouch, recolor or generated imagery"
+    },
+    {
+      "source": "GELEN-VIDEOLAR/once-sonra/uygulama-04-once-sonra.mov",
+      "sourceBytes": 47144929,
+      "sourceSha256": "40e710c14e2725e8b287a5a74a267d0432db4cd25bb7d3e7a2bc360ef6635e27",
+      "url": "/media/videos/uygulama-04.mp4",
+      "bytes": 4073473,
+      "sha256": "7e564b5ff531a70abed62af0ac8e06a5f063ad87999a34b486d154eb0b97aade",
+      "width": 720,
+      "height": 1280,
+      "fps": 30,
+      "videoCodec": "h264",
+      "audioCodec": "aac",
+      "faststart": true,
+      "duration": 14.495,
+      "operation": "resize and encode only; no crop, retouch, recolor or generated imagery"
+    },
+    {
+      "source": "GELEN-VIDEOLAR/once-sonra/uygulama-05-once-sonra.mov",
+      "sourceBytes": 46903901,
+      "sourceSha256": "5121dca8c62554dc756462bb303d93c9094029761eaa531cb83c55cd1abfdaff",
+      "url": "/media/videos/uygulama-05.mp4",
+      "bytes": 3351459,
+      "sha256": "6b26de40b85c054b902c83df3ecca12430c1fbdede32bc7b159f5b6b68ab1303",
+      "width": 720,
+      "height": 1280,
+      "fps": 30,
+      "videoCodec": "h264",
+      "audioCodec": "aac",
+      "faststart": true,
+      "duration": 14.372,
+      "operation": "resize and encode only; no crop, retouch, recolor or generated imagery"
+    },
+    {
+      "source": "GELEN-VIDEOLAR/once-sonra/uygulama-06-once-sonra.mov",
+      "sourceBytes": 47098385,
+      "sourceSha256": "f84a5a7998164f1b398141c4026b20951dfc12a8bd266afd4b3072265bc83b0f",
+      "url": "/media/videos/uygulama-06.mp4",
+      "bytes": 3247292,
+      "sha256": "05f137858d90d3b4bc6ff807d479d8997f61fcc188f610666418ec237cfe8dba",
+      "width": 720,
+      "height": 1280,
+      "fps": 30,
+      "videoCodec": "h264",
+      "audioCodec": "aac",
+      "faststart": true,
+      "duration": 14.372,
+      "operation": "resize and encode only; no crop, retouch, recolor or generated imagery"
+    },
+    {
+      "source": "GELEN-VIDEOLAR/once-sonra/uygulama-07-once-sonra.mov",
+      "sourceBytes": 47503746,
+      "sourceSha256": "57e7daa1a84b7a9f53135d37dd28993b699260a127c9333c5db26282cf099804",
+      "url": "/media/videos/uygulama-07.mp4",
+      "bytes": 3324677,
+      "sha256": "8feb5a85d26839ef7da46144e235494bf649776750792c7c3480bd9af25753d1",
+      "width": 720,
+      "height": 1280,
+      "fps": 30,
+      "videoCodec": "h264",
+      "audioCodec": "aac",
+      "faststart": true,
+      "duration": 14.51,
+      "operation": "resize and encode only; no crop, retouch, recolor or generated imagery"
+    },
+    {
+      "source": "GELEN-VIDEOLAR/once-sonra/uygulama-08-once-sonra.mov",
+      "sourceBytes": 47562624,
+      "sourceSha256": "724b0d254ab6e6cf4f2e1fc5e282eb5a71be0757be3208bd0b2f19b4dcb45193",
+      "url": "/media/videos/uygulama-08.mp4",
+      "bytes": 3027862,
+      "sha256": "4fe4d6b654d58229aec05f83d41ac4416d629af2e858aa70856a1ec0cff5086d",
+      "width": 720,
+      "height": 1280,
+      "fps": 30,
+      "videoCodec": "h264",
+      "audioCodec": "aac",
+      "faststart": true,
+      "duration": 14.525,
+      "operation": "resize and encode only; no crop, retouch, recolor or generated imagery"
+    },
+    {
+      "source": "GELEN-VIDEOLAR/once-sonra/uygulama-09-once-sonra.mov",
+      "sourceBytes": 47427119,
+      "sourceSha256": "a185c85fb9283dffbfbb69ec1c4f14d10b891803340222948be9899fa0a5be01",
+      "url": "/media/videos/uygulama-09.mp4",
+      "bytes": 3193537,
+      "sha256": "1717b1fc7d77054c5e42a3b1fdbf2908cdbcd94f0962489bfbbdfb3a569b003c",
+      "width": 720,
+      "height": 1280,
+      "fps": 30,
+      "videoCodec": "h264",
+      "audioCodec": "aac",
+      "faststart": true,
+      "duration": 14.5,
+      "operation": "resize and encode only; no crop, retouch, recolor or generated imagery"
+    },
+    {
+      "source": "GELEN-VIDEOLAR/orijinaller/video-01-mikro-kaynak-planlama-DO1XXtQCHuJ.mp4",
+      "sourceBytes": 40973292,
+      "sourceSha256": "1d3aa6d83c050e81eebdaeb3aac37e86eec83db3564b35c4079be25009cc5462",
+      "url": "/media/videos/planlama.mp4",
+      "bytes": 32135273,
+      "sha256": "3a42bd9ea5235c86e39b70aaac0a741dceee4ccd9a3990e21e7dbf3fe05f09fc",
+      "width": 720,
+      "height": 1280,
+      "fps": 30,
+      "videoCodec": "h264",
+      "audioCodec": "aac",
+      "faststart": true,
+      "duration": 135.443,
+      "operation": "resize and encode only; no crop, retouch, recolor or generated imagery"
+    },
+    {
+      "source": "GELEN-VIDEOLAR/orijinaller/video-02-mikro-kaynak-kullanim-deneyimi-DPYM8X1iCyW.mp4",
+      "sourceBytes": 28134372,
+      "sourceSha256": "69ae2d3ad80dd5cf274c81a3b23573f0968fd9e225eb17b61d74e03ec96db6c5",
+      "url": "/media/videos/deneyim.mp4",
+      "bytes": 19649295,
+      "sha256": "5cf8cd1b2b8b79796db9a10bc0f43b1137b49bce081c9b5c2ffa7a19f35890ad",
+      "width": 720,
+      "height": 1280,
+      "fps": 30,
+      "videoCodec": "h264",
+      "audioCodec": "aac",
+      "faststart": true,
+      "duration": 97.641,
+      "operation": "resize and encode only; no crop, retouch, recolor or generated imagery"
+    }
+  ],
+  "posters": [
+    {
+      "source": "GELEN-VIDEOLAR/orijinaller/video-01-mikro-kaynak-planlama-DO1XXtQCHuJ.mp4",
+      "sourceTimeSeconds": 22,
+      "url": "/media/posters/planlama.jpg",
+      "bytes": 134366,
+      "sha256": "aa3749caf5126040aa18e63f3f755aa356727f91f15f31c55a39ed89dc3237aa",
+      "operation": "faithful extracted video frame"
+    },
+    {
+      "source": "GELEN-VIDEOLAR/orijinaller/video-02-mikro-kaynak-kullanim-deneyimi-DPYM8X1iCyW.mp4",
+      "sourceTimeSeconds": 18,
+      "url": "/media/posters/deneyim.jpg",
+      "bytes": 176743,
+      "sha256": "fff4f6e77cf0837d6f66518baa47368d7169cb15218d7ee5045aab6479859118",
+      "operation": "faithful extracted video frame"
+    }
+  ],
+  "fonts": [
+    {
+      "name": "Inter",
+      "url": "/fonts/Inter.woff2",
+      "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/inter/Inter%5Bopsz%2Cwght%5D.ttf",
+      "bytes": 350372,
+      "sha256": "a2cc4486774d9bd824caf95a2b6eedd7b553ef02a4f0e9afa9b8180fc23a5865",
+      "sourceTtfUrl": "/fonts/Inter.ttf",
+      "sourceTtfBytes": 876576,
+      "sourceTtfSha256": "29160a80ff49ddcab2c97711247e08b1fab27a484a329ce8b813d820dc559031",
+      "variableAxes": [
+        {
+          "tag": "opsz",
+          "min": 14.0,
+          "default": 14.0,
+          "max": 32.0
+        },
+        {
+          "tag": "wght",
+          "min": 100.0,
+          "default": 400.0,
+          "max": 900.0
+        }
+      ],
+      "verifiedCharacters": "ĞğİıŞşÇçÖöÜüЖжЯяЮю",
+      "license": "/fonts/Inter-OFL.txt"
+    },
+    {
+      "name": "NotoSansArabic",
+      "url": "/fonts/NotoSansArabic.woff2",
+      "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/notosansarabic/NotoSansArabic%5Bwdth%2Cwght%5D.ttf",
+      "bytes": 361252,
+      "sha256": "278b543605c39f576daf64fc172c74b47674a5feb3c529594992edca9c5855f9",
+      "sourceTtfUrl": "/fonts/NotoSansArabic.ttf",
+      "sourceTtfBytes": 844676,
+      "sourceTtfSha256": "63111b5b2e074dd48cc67692e0a2726d86ee94c1c37fe8598257b7b4e87e869e",
+      "variableAxes": [
+        {
+          "tag": "wght",
+          "min": 100.0,
+          "default": 400.0,
+          "max": 900.0
+        },
+        {
+          "tag": "wdth",
+          "min": 62.5,
+          "default": 100.0,
+          "max": 100.0
+        }
+      ],
+      "verifiedCharacters": "العربية",
+      "license": "/fonts/NotoSansArabic-OFL.txt"
+    }
+  ],
+  "servedAssetBytes": 94886188,
+  "totalBytes": 96622347
+}

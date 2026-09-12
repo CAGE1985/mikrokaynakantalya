@@ -1,0 +1,26 @@
+# Yerel medya indirme yardımcıları
+.araclar/
+
+# Büyük arşiv dosyaları ve geçici kaynak medya adresleri
+GELEN-VIDEOLAR/orijinaller/
+GELEN-VIDEOLAR/once-sonra/*
+!GELEN-VIDEOLAR/once-sonra/NASIL-EKLENIR.md
+
+# macOS
+.DS_Store
+
+node_modules/
+.next/
+.vercel/
+.env*
+!.env.example
+*.tsbuildinfo
+test-results/
+playwright-report/
+.calisma/
+
+GELEN-GORSELLER/**/*.jpg
+GELEN-GORSELLER/**/*.png
+public/fonts/*.ttf
+
+tests/artifacts/
