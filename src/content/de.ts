@@ -2,6 +2,8 @@ import type { Content } from "./types";
 
 export const de: Content = {
   meta: {
+    socialImageAlt:
+      "Das Logo von Platin Antalya und langes, gewelltes braunes Haar nach Micro-Bonding-Extensions in Antalya. Ihr Haar. Ein neues Gefühl.",
     title: "Micro-Bonding-Extensions in Antalya | Platin Antalya",
     description:
       "Individuelle Micro-Bonding-Extensions in Lara, Antalya. Echte Vorher-Nachher-Fotos, Anwendungsvideos, Strähnenplanung und Pflegetipps. Jetzt kostenlos beraten lassen.",

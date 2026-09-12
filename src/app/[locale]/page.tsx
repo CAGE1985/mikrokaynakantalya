@@ -15,7 +15,13 @@ import {
 } from "lucide-react";
 import { getContent } from "@/content";
 import { isLocale, locales, localePath } from "@/i18n/routing";
-import { links, address, phoneDisplay, SITE_URL } from "@/lib/site";
+import {
+  links,
+  address,
+  phoneDisplay,
+  SITE_URL,
+  SOCIAL_IMAGE_ORIGIN,
+} from "@/lib/site";
 import { Header } from "@/components/header";
 import { Gallery } from "@/components/gallery";
 import { VideoCard } from "@/components/video-card";
@@ -32,6 +38,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!isLocale(locale)) notFound();
   const c = await getContent(locale);
   const canonical = `${SITE_URL}${localePath(locale)}`;
+  const socialImage = {
+    url: `${SOCIAL_IMAGE_ORIGIN}/media/social/mikro-kaynak-antalya-${locale}-v1.jpg`,
+    width: 1200,
+    height: 630,
+    type: "image/jpeg",
+    alt: c.meta.socialImageAlt,
+  };
   const ogLocale = {
     tr: "tr_TR",
     en: "en_GB",
@@ -58,19 +71,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description: c.meta.description,
       url: canonical,
       locale: ogLocale[locale],
-      images: [
-        {
-          url: "/media/photos/uygulama-01-sonra.jpg",
-          width: 1320,
-          height: 2340,
-          alt: c.hero.photoCaption,
-        },
-      ],
+      alternateLocale: locales
+        .filter((language) => language !== locale)
+        .map((language) => ogLocale[language]),
+      images: [socialImage],
     },
     twitter: {
       card: "summary_large_image",
       title: c.meta.title,
       description: c.meta.description,
+      images: [{ url: socialImage.url, alt: socialImage.alt }],
     },
     robots:
       process.env.VERCEL_ENV === "preview"

@@ -2,7 +2,7 @@ export type FaqAction =
   "consult" | "calculate" | "book" | "whatsapp" | "call" | "directions";
 
 export type Content = {
-  meta: { title: string; description: string };
+  meta: { title: string; description: string; socialImageAlt: string };
   nav: {
     results: string;
     method: string;

@@ -2,6 +2,8 @@ import type { Content } from "./types";
 
 export const en: Content = {
   meta: {
+    socialImageAlt:
+      "The Platin Antalya logo and long, wavy brown hair after micro bond extensions in Antalya. Your hair. A new feeling.",
     title: "Micro Bond Hair Extensions in Antalya | Platin Antalya",
     description:
       "Personalised micro bond hair extensions in Lara, Antalya. Explore real before-and-after photos, application videos, strand weight planning and aftercare. Book a free consultation.",

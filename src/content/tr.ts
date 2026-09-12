@@ -2,6 +2,8 @@ import type { Content } from "./types";
 
 export const tr: Content = {
   meta: {
+    socialImageAlt:
+      "Platin Antalya logosu ve mikro kaynak sonrası uzun, dalgalı kahverengi saçlar. Mikro Kaynak Antalya: Sizin saçınız. Yeni bir his.",
     title: "Mikro Kaynak Antalya | Saçınıza Özel Uygulama – Platin Antalya",
     description:
       "Antalya Lara’da saçınıza özel mikro kaynak. Gerçek öncesi sonrası fotoğrafları, uygulama videoları, bölgesel gramaj planlaması ve bakım rehberi. Ücretsiz ön görüşme alın.",

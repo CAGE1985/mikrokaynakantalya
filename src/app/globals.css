@@ -2181,7 +2181,9 @@ section[id],
     border-radius: 150px 150px 4px 4px;
   }
   .intro-image > img {
-    object-position: center bottom;
+    height: 100%;
+    object-position: center 70%;
+    transform: none;
   }
   .intro-body > h3 {
     font-size: 25px;
