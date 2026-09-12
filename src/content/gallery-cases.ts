@@ -16,7 +16,7 @@ type CaseText = [
 ];
 
 // Order follows the verified local photo/video IDs, not the source page order.
-// Source-to-photo evidence is recorded in GALERI-ACIKLAMALARI.md.
+// Source: https://www.platinantalya.com/mikro-kaynak-antalya
 const cases: Record<Locale, CaseText[]> = {
   tr: [
     [

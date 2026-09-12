@@ -1,26 +1,18 @@
-# Yerel medya indirme yardımcıları
-.araclar/
+# Publish only the website source, public assets and build configuration.
+/*
+!/.gitignore
+!/.vercelignore
+!/package.json
+!/package-lock.json
+!/next-env.d.ts
+!/next.config.ts
+!/postcss.config.mjs
+!/tsconfig.json
+!/src/
+!/public/
 
-# Büyük arşiv dosyaları ve geçici kaynak medya adresleri
-GELEN-VIDEOLAR/orijinaller/
-GELEN-VIDEOLAR/once-sonra/*
-!GELEN-VIDEOLAR/once-sonra/NASIL-EKLENIR.md
-
-# macOS
-.DS_Store
-
-node_modules/
-.next/
-.vercel/
-.env*
-!.env.example
-*.tsbuildinfo
-test-results/
-playwright-report/
-.calisma/
-
-GELEN-GORSELLER/**/*.jpg
-GELEN-GORSELLER/**/*.png
-public/fonts/*.ttf
-
-tests/artifacts/
+# Local originals and media preparation inventory are not website assets.
+/public/fonts/*.ttf
+/public/media/manifest.json
+**/.DS_Store
+**/*.md
