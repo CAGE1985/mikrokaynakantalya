@@ -191,6 +191,53 @@ section[id],
   background: #eae2d6;
   color: #62442e;
 }
+.button.action-button {
+  min-height: 54px;
+  max-width: 100%;
+  width: fit-content;
+  gap: 13px;
+  border: 1px solid transparent;
+  font-weight: 600;
+  line-height: 1.55;
+  text-align: center;
+}
+.action-button > span {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.button.button-bronze {
+  background: var(--bronze);
+  color: #fff;
+  border-color: #79563d;
+  box-shadow: 0 4px 13px #684a3014;
+}
+.button.button-bronze:hover {
+  background: #715039;
+  color: #fff;
+}
+.button.button-whatsapp {
+  background: #25d366;
+  color: #10291c;
+  border-color: #15984b;
+  box-shadow: 0 4px 13px #12683418;
+}
+.button.button-whatsapp:hover {
+  background: #20bf5c;
+  color: #10291c;
+  border-color: #0c7838;
+}
+.button.button-whatsapp:focus-visible {
+  outline-color: #138747;
+}
+.button.button-contact {
+  background: #e7ddcf;
+  color: #453020;
+  border-color: #b5a08a;
+}
+.button.button-contact:hover {
+  background: #daccb9;
+  color: #352315;
+}
 .hero-actions .hero-discover {
   background: #eae3d8;
   border-color: #b49b85;
@@ -225,7 +272,7 @@ section[id],
   margin-block: 22px 4px;
 }
 .faq-actions .button {
-  min-height: 44px;
+  min-height: 48px;
   font-size: 12px;
   padding: 12px 17px;
   gap: 12px;
@@ -284,6 +331,10 @@ section[id],
 }
 .section-heading > .text-link {
   justify-self: end;
+}
+.section-heading > .action-button {
+  justify-self: end;
+  align-self: end;
 }
 .skip-link {
   position: fixed;
@@ -1097,6 +1148,9 @@ section[id],
 .suitability-section .text-link {
   margin-top: 20px;
 }
+.suitability-section .action-button {
+  margin-top: 24px;
+}
 .hair-section {
   background: #eae4da;
 }
@@ -1289,6 +1343,9 @@ section[id],
 .renewal-note .text-link {
   margin-top: 10px;
 }
+.renewal-note .button-whatsapp {
+  margin-top: 22px;
+}
 .experience-grid {
   display: grid;
   grid-template-columns: 0.85fr 1.15fr;
@@ -1450,9 +1507,22 @@ section[id],
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 35px;
+  gap: 16px;
   flex-wrap: wrap;
   margin-top: 35px;
+}
+.contact-actions .action-button {
+  min-width: min(225px, 100%);
+}
+.contact-actions .button-bronze {
+  border-color: #c9a98b;
+  box-shadow: 0 5px 20px #0002;
+}
+.contact-actions .button-bronze:hover {
+  border-color: #e3c7ac;
+}
+.contact-section .button-whatsapp:focus-visible {
+  outline-color: #8bedaf;
 }
 .contact-top > .caption {
   font-size: 10px;
@@ -1480,6 +1550,11 @@ section[id],
 .contact-details .text-link {
   font-size: 11px;
   margin-top: 14px;
+}
+.contact-details .button-whatsapp {
+  margin-top: 18px;
+  padding-inline: 18px;
+  font-size: 12px;
 }
 .contact-phone {
   font-size: 23px;
@@ -1975,6 +2050,19 @@ section[id],
   }
   .section-heading > .text-link {
     margin-top: 17px;
+  }
+  .section-heading > .action-button {
+    margin-top: 24px;
+  }
+  .button.action-button {
+    min-height: 50px;
+    padding: 14px 18px;
+    font-size: 12px;
+    gap: 11px;
+  }
+  .faq-actions .action-button {
+    min-height: 48px;
+    padding: 12px 15px;
   }
   .results-section {
     padding-top: 60px;

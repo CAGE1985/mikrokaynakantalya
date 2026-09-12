@@ -21,6 +21,7 @@ import { Gallery } from "@/components/gallery";
 import { VideoCard } from "@/components/video-card";
 import { Reveal } from "@/components/reveal";
 import { HairGroups } from "@/components/hair-groups";
+import { WhatsAppIcon } from "@/components/whatsapp-icon";
 import { getHairDetails } from "@/content/hair-details";
 import { getGalleryCases } from "@/content/gallery-cases";
 import type { FaqAction } from "@/content/types";
@@ -382,8 +383,11 @@ export default async function Home({ params }: Props) {
               ))}
             </ul>
             <p className="caption">{c.suitability.note}</p>
-            <a className="text-link" href={links.consultation}>
-              {c.actions.consult}
+            <a
+              className="button action-button button-bronze"
+              href={links.consultation}
+            >
+              <span>{c.actions.consult}</span>
               <ArrowUpRight size={18} />
             </a>
           </div>
@@ -413,8 +417,11 @@ export default async function Home({ params }: Props) {
               {eyebrow(c.process.eyebrow)}
               <h2>{c.process.title}</h2>
             </div>
-            <a className="text-link" href={links.booking}>
-              {c.actions.book}
+            <a
+              className="button action-button button-bronze"
+              href={links.booking}
+            >
+              <span>{c.actions.book}</span>
               <ArrowUpRight size={18} />
             </a>
           </div>
@@ -503,9 +510,12 @@ export default async function Home({ params }: Props) {
             </div>
             <div>
               <p>{c.care.renewalText}</p>
-              <a className="text-link" href={links.whatsapp}>
-                {c.actions.whatsapp}
-                <ArrowUpRight size={18} />
+              <a
+                className="button action-button button-whatsapp"
+                href={links.whatsapp}
+              >
+                <WhatsAppIcon />
+                <span>{c.actions.whatsapp}</span>
               </a>
             </div>
           </div>
@@ -571,8 +581,16 @@ export default async function Home({ params }: Props) {
                               <a
                                 key={action}
                                 href={faqDestinations[action]}
-                                className="button button-outline"
+                                className={`button action-button ${
+                                  action === "whatsapp"
+                                    ? "button-whatsapp"
+                                    : action === "call" ||
+                                        action === "directions"
+                                      ? "button-contact"
+                                      : "button-bronze"
+                                }`}
                               >
+                                {action === "whatsapp" && <WhatsAppIcon />}
                                 <span>
                                   {c.actions[action]}
                                   {action === "call" && (
@@ -581,7 +599,8 @@ export default async function Home({ params }: Props) {
                                     </bdi>
                                   )}
                                 </span>
-                                {action === "call" ? (
+                                {action === "whatsapp" ? null : action ===
+                                  "call" ? (
                                   <Phone size={16} />
                                 ) : action === "directions" ? (
                                   <MapPin size={16} />
@@ -608,12 +627,18 @@ export default async function Home({ params }: Props) {
               <h2>{c.contact.title}</h2>
               <p>{c.contact.description}</p>
               <div className="contact-actions">
-                <a className="button button-light" href={links.consultation}>
-                  {c.actions.consult}
+                <a
+                  className="button button-light action-button"
+                  href={links.consultation}
+                >
+                  <span>{c.actions.consult}</span>
                   <ArrowUpRight size={19} />
                 </a>
-                <a className="text-link" href={links.booking}>
-                  {c.actions.book}
+                <a
+                  className="button action-button button-bronze"
+                  href={links.booking}
+                >
+                  <span>{c.actions.book}</span>
                   <ArrowUpRight size={18} />
                 </a>
               </div>
@@ -643,9 +668,12 @@ export default async function Home({ params }: Props) {
                 <a className="contact-phone" href={links.phone} dir="ltr">
                   {phoneDisplay}
                 </a>
-                <a className="text-link" href={links.whatsapp}>
-                  {c.actions.whatsapp}
-                  <ArrowUpRight size={16} />
+                <a
+                  className="button action-button button-whatsapp"
+                  href={links.whatsapp}
+                >
+                  <WhatsAppIcon />
+                  <span>{c.actions.whatsapp}</span>
                 </a>
               </div>
             </div>
