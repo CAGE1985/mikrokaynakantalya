@@ -6,6 +6,11 @@ const config: NextConfig = {
   poweredByHeader: false,
   devIndicators: false,
   images: { formats: ["image/avif", "image/webp"], qualities: [75, 85] },
+  async redirects() {
+    return [
+      { source: "/icon.svg", destination: "/icon.png", permanent: true },
+    ];
+  },
   async headers() {
     return [
       {

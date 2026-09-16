@@ -21,7 +21,10 @@ const arabic = localFont({
 export const metadata: Metadata = {
   metadataBase: new URL("https://mikrokaynakantalya.com"),
   applicationName: "Platin Antalya · Mikro Kaynak",
-  icons: { icon: "/icon.svg", apple: "/media/logo.png" },
+  icons: {
+    icon: { url: "/icon.png", type: "image/png", sizes: "500x500" },
+    apple: { url: "/icon.png", type: "image/png", sizes: "500x500" },
+  },
 };
 export const viewport: Viewport = {
   width: "device-width",
