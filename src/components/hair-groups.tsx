@@ -51,22 +51,36 @@ function HairGroup({
         data-reveal
       >
         <div className="hair-art" aria-hidden="true">
-          <svg viewBox="0 0 300 230" fill="none">
-            {Array.from({ length: 32 }, (_, n) => (
+          <span className="hair-art-index">0{index + 1}</span>
+          <svg viewBox="0 0 360 220" fill="none" focusable="false">
+            <defs>
+              <linearGradient
+                id={`hair-shade-${group.id}`}
+                x1="0"
+                y1="0"
+                x2="1"
+                y2="1"
+              >
+                <stop stopColor="currentColor" stopOpacity="0.35" />
+                <stop offset="0.5" stopColor="currentColor" />
+                <stop offset="1" stopColor="currentColor" stopOpacity="0.15" />
+              </linearGradient>
+            </defs>
+            {Array.from({ length: 52 }, (_, n) => (
               <path
                 key={n}
-                d={`M ${40 + n * 6} -20 C ${-40 + n * 7} 90, ${155 + n * 5} 150, ${95 + n * 7} 255`}
-                stroke="currentColor"
-                strokeWidth={1 + (n % 3) * 0.25}
-                opacity={0.25 + (n % 4) * 0.15}
+                d={`M ${135 + n * 0.75} -24 C ${100 + n * 1.4} 54, ${225 + n * 1.15} 90, ${148 + n * 1.8} 158 S ${84 + n * 2.9} 218, ${73 + n * 3.3} 258`}
+                stroke={`url(#hair-shade-${group.id})`}
+                strokeWidth={0.8 + (n % 4) * 0.3}
+                opacity={0.35 + (n % 5) * 0.13}
               />
             ))}
           </svg>
         </div>
         <div className="hair-group-title">
-          <span>0{index + 1}</span>
           <div className="hair-group-copy">
             <h3 id={`hair-card-${group.id}`}>{group.name}</h3>
+            <p className="hair-group-description">{group.closingTitle}</p>
             <button
               ref={opener}
               type="button"
@@ -77,7 +91,7 @@ function HairGroup({
               aria-labelledby={`hair-card-${group.id} hair-detail-${group.id}`}
             >
               <span id={`hair-detail-${group.id}`}>{detailsLabel}</span>
-              <Plus size={16} aria-hidden="true" />
+              <Plus size={18} aria-hidden="true" />
             </button>
           </div>
         </div>
@@ -117,7 +131,7 @@ function HairGroup({
             aria-label={closeLabel}
             autoFocus
           >
-            <X size={22} />
+            <X size={22} aria-hidden="true" />
           </button>
         </div>
         <div className="hair-dialog-body">

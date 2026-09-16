@@ -1,10 +1,12 @@
 "use client";
+
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { ArrowUpRight, Check, ChevronDown, Menu, X } from "lucide-react";
 import type { Content } from "@/content/types";
 import { localePath, type Locale } from "@/i18n/routing";
 import { links } from "@/lib/site";
+import "./header.css";
 
 export const sections = [
   "donusumler",
@@ -28,6 +30,7 @@ const flags: Record<Locale, string> = {
   de: "🇩🇪",
   ar: "🇸🇦",
 };
+
 export function Header({
   locale,
   nav,
@@ -42,7 +45,9 @@ export function Header({
   const [active, setActive] = useState("");
   const [hash, setHash] = useState("");
   const menuButton = useRef<HTMLButtonElement>(null);
+  const menuDialog = useRef<HTMLDialogElement>(null);
   const languageButton = useRef<HTMLButtonElement>(null);
+  const languageList = useRef<HTMLElement>(null);
   const labels = [
     nav.results,
     nav.method,
@@ -51,6 +56,7 @@ export function Header({
     nav.price,
     nav.faq,
   ];
+
   useEffect(() => {
     const readHash = () => setHash(location.hash);
     readHash();
@@ -72,69 +78,53 @@ export function Header({
       window.removeEventListener("hashchange", readHash);
     };
   }, []);
+
   useEffect(() => {
+    if (!language) return;
     const keydown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
-        if (language) {
-          setLanguage(false);
-          languageButton.current?.focus();
-        } else if (menu) {
-          setMenu(false);
-          menuButton.current?.focus();
-        }
-      }
-      if (menu && event.key === "Tab") {
-        const items = Array.from(
-          document.querySelectorAll<HTMLElement>(
-            ".site-header a,.site-header button:not(.language-dismiss),.mobile-menu a",
-          ),
-        ).filter((el) => el.offsetParent !== null);
-        const first = items[0],
-          last = items.at(-1);
-        if (event.shiftKey && document.activeElement === first) {
-          event.preventDefault();
-          last?.focus();
-        } else if (!event.shiftKey && document.activeElement === last) {
-          event.preventDefault();
-          first?.focus();
-        }
+        setLanguage(false);
+        languageButton.current?.focus();
       }
     };
     window.addEventListener("keydown", keydown);
     return () => window.removeEventListener("keydown", keydown);
-  }, [menu, language]);
+  }, [language]);
+
   useEffect(() => {
     if (!menu) return;
-    const previous = document.body.style.overflow;
+    const dialog = menuDialog.current;
+    if (!dialog) return;
+    dialog.showModal();
+    const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
-    const background = Array.from(
-      document.querySelectorAll<HTMLElement>(
-        "main,.site-footer,.mobile-actions",
-      ),
-    );
-    background.forEach((el) => (el.inert = true));
-    document.querySelector<HTMLAnchorElement>(".mobile-menu a")?.focus();
-    const media = window.matchMedia("(max-width:850px)");
+    const media = window.matchMedia("(max-width:1120px)");
     const resize = () => {
       if (!media.matches) setMenu(false);
     };
     media.addEventListener("change", resize);
     return () => {
-      document.body.style.overflow = previous;
-      background.forEach((el) => (el.inert = false));
+      dialog.close();
+      document.body.style.overflow = previousOverflow;
       media.removeEventListener("change", resize);
     };
   }, [menu]);
+
+  const closeMenu = () => {
+    setMenu(false);
+    requestAnimationFrame(() => menuButton.current?.focus());
+  };
   const visitSection = (id: string) => {
     setMenu(false);
-    requestAnimationFrame(() =>
+    requestAnimationFrame(() => {
       requestAnimationFrame(() => {
         const section = document.getElementById(id);
         section?.setAttribute("tabindex", "-1");
         section?.focus({ preventScroll: true });
-      }),
-    );
+      });
+    });
   };
+
   return (
     <>
       <header className="site-header">
@@ -149,7 +139,7 @@ export function Header({
             width={1200}
             height={400}
             loading="eager"
-            sizes="(max-width: 600px) 135px, 164px"
+            sizes="(max-width: 700px) 142px, 154px"
           />
         </a>
         <nav className="desktop-nav" aria-label={nav.menu}>
@@ -157,6 +147,7 @@ export function Header({
             <a
               href={`#${id}`}
               className={active === id ? "active" : ""}
+              aria-current={active === id ? "location" : undefined}
               key={id}
             >
               {labels[i]}
@@ -164,29 +155,56 @@ export function Header({
           ))}
         </nav>
         <div className="header-tools">
-          <div className="language-control">
+          <div
+            className="language-control"
+            onBlur={(event) => {
+              if (
+                event.relatedTarget instanceof Node &&
+                !event.currentTarget.contains(event.relatedTarget)
+              ) {
+                setLanguage(false);
+              }
+            }}
+          >
             <button
               ref={languageButton}
               className="language-toggle"
+              type="button"
               aria-label={`${nav.language} (${locale.toUpperCase()})`}
               aria-expanded={language}
               aria-controls="language-list"
               onClick={() => setLanguage(!language)}
+              onKeyDown={(event) => {
+                if (event.key === "ArrowDown") {
+                  event.preventDefault();
+                  setLanguage(true);
+                  requestAnimationFrame(() =>
+                    languageList.current?.querySelector("a")?.focus(),
+                  );
+                }
+              }}
             >
               <span className="language-flag" aria-hidden="true">
                 {flags[locale]}
               </span>
-              {locale.toUpperCase()}
-              <ChevronDown size={12} />
+              <span>{locale.toUpperCase()}</span>
+              <ChevronDown size={14} aria-hidden="true" />
             </button>
             {language && (
               <>
                 <button
+                  type="button"
                   className="language-dismiss"
                   aria-label={nav.close}
+                  tabIndex={-1}
                   onClick={() => setLanguage(false)}
                 />
-                <div id="language-list" className="language-list">
+                <nav
+                  ref={languageList}
+                  id="language-list"
+                  className="language-list"
+                  aria-label={nav.language}
+                >
                   {Object.entries(nativeNames).map(([key, name]) => (
                     <a
                       key={key}
@@ -202,55 +220,117 @@ export function Header({
                         </span>
                         {name}
                       </span>
-                      {key === locale && <Check size={14} />}
+                      {key === locale && <Check size={16} aria-hidden="true" />}
                     </a>
                   ))}
-                </div>
+                </nav>
               </>
             )}
           </div>
-          <a
-            className="button button-small header-consult"
-            href={links.consultation}
-          >
+          <a className="button header-consult" href={links.consultation}>
             {actions.consult}
-            <ArrowUpRight size={15} />
+            <ArrowUpRight size={17} aria-hidden="true" />
           </a>
           <button
             ref={menuButton}
+            type="button"
             className="menu-toggle"
             onClick={() => {
-              setMenu(!menu);
+              setMenu(true);
               setLanguage(false);
             }}
-            aria-label={menu ? nav.close : nav.menu}
+            aria-label={nav.menu}
             aria-expanded={menu}
             aria-controls="mobile-menu"
+            aria-haspopup="dialog"
           >
-            {menu ? <X /> : <Menu />}
+            <Menu size={23} aria-hidden="true" />
           </button>
         </div>
       </header>
+
       {menu && (
-        <nav id="mobile-menu" className="mobile-menu" aria-label={nav.menu}>
-          {sections.map((id, i) => (
-            <a href={`#${id}`} key={id} onClick={() => visitSection(id)}>
-              <span className="menu-number">0{i + 1}</span>
-              {labels[i]}
-              <ArrowUpRight />
+        <dialog
+          ref={menuDialog}
+          id="mobile-menu"
+          className="mobile-menu"
+          aria-label={nav.menu}
+          onCancel={(event) => {
+            event.preventDefault();
+            closeMenu();
+          }}
+        >
+          <div className="mobile-menu-masthead">
+            <a
+              href={localePath(locale)}
+              className="brand"
+              aria-label={`Platin Antalya · ${nav.home}`}
+            >
+              <Image
+                src="/media/logo.png"
+                alt="Platin Antalya"
+                width={1200}
+                height={400}
+                sizes="142px"
+              />
             </a>
-          ))}
-          <a className="button" href={links.consultation}>
-            {actions.consult}
-            <ArrowUpRight size={18} />
-          </a>
-          <p>PLATİN ANTALYA · LARA</p>
-        </nav>
+            <button
+              type="button"
+              className="mobile-menu-close"
+              aria-label={nav.close}
+              onClick={closeMenu}
+              autoFocus
+            >
+              <X size={23} aria-hidden="true" />
+            </button>
+          </div>
+          <div className="mobile-menu-content">
+            <p className="mobile-menu-eyebrow">PLATİN ANTALYA · LARA</p>
+            <nav className="mobile-menu-links" aria-label={nav.menu}>
+              {sections.map((id, i) => (
+                <a
+                  href={`#${id}`}
+                  key={id}
+                  onClick={() => visitSection(id)}
+                  aria-current={active === id ? "location" : undefined}
+                >
+                  <span className="menu-number" aria-hidden="true">
+                    0{i + 1}
+                  </span>
+                  <span>{labels[i]}</span>
+                  <ArrowUpRight size={23} aria-hidden="true" />
+                </a>
+              ))}
+            </nav>
+            <nav className="mobile-menu-languages" aria-label={nav.language}>
+              {Object.entries(nativeNames).map(([key, name]) => (
+                <a
+                  key={key}
+                  href={`${localePath(key as Locale)}${hash}`}
+                  lang={key}
+                  dir={key === "ar" ? "rtl" : "ltr"}
+                  hrefLang={key}
+                  aria-current={key === locale ? "page" : undefined}
+                >
+                  <span className="language-flag" aria-hidden="true">
+                    {flags[key as Locale]}
+                  </span>
+                  {name}
+                </a>
+              ))}
+            </nav>
+            <a className="button mobile-menu-consult" href={links.consultation}>
+              {actions.consult}
+              <ArrowUpRight size={19} aria-hidden="true" />
+            </a>
+          </div>
+        </dialog>
       )}
+
       <div className="mobile-actions">
         <a href={links.consultation}>
-          {actions.mobileConsult}
-          <ArrowUpRight size={17} />
+          <span>{actions.mobileConsult}</span>
+          <ArrowUpRight size={18} aria-hidden="true" />
         </a>
         <a href="#fiyat">{actions.mobilePrice}</a>
       </div>

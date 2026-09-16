@@ -175,125 +175,165 @@ export function Gallery({
 
   return (
     <div className="gallery gallery-with-details">
-      <div className="gallery-toolbar">
-        <span className="case-label">
-          {copy.application} <b>{number}</b>
-          <span className="soft" dir="ltr">
-            {" "}
-            / {total}
+      <div className="gallery-panel">
+        <div className="gallery-toolbar">
+          <span className="case-label">
+            <span className="gallery-case-dot" aria-hidden="true" />
+            {copy.application} <b dir="ltr">{number}</b>
+            <span className="gallery-case-total" dir="ltr">
+              / {total}
+            </span>
           </span>
-        </span>
-        <div className="segmented" role="group" aria-label={copy.application}>
-          <button
-            aria-pressed={mode === "photo"}
-            onClick={() => setMode("photo")}
+          <div
+            className="gallery-segmented"
+            role="group"
+            aria-label={copy.application}
           >
-            {copy.photo}
-          </button>
-          <button
-            aria-pressed={mode === "video"}
-            onClick={() => setMode("video")}
-          >
-            <Play size={12} />
-            {copy.video}
-          </button>
-        </div>
-      </div>
-      <div className={`gallery-stage ${mode === "video" ? "is-video" : ""}`}>
-        {mode === "photo" ? (
-          (["once", "sonra"] as const).map((kind, position) => (
             <button
-              key={kind}
-              className="comparison-photo"
-              onClick={open}
-              aria-label={`${copy.open} · ${current.title} · ${position ? copy.after : copy.before}`}
+              type="button"
+              aria-pressed={mode === "photo"}
+              onClick={() => setMode("photo")}
             >
-              <Image
-                key={`${kind}-${number}`}
-                src={`/media/photos/uygulama-${number}-${kind}.jpg`}
-                alt={position ? current.afterAlt : current.beforeAlt}
-                width={1320}
-                height={2340}
-                sizes="(max-width: 700px) 46vw, 42vw"
-              />
-              <span className="image-label">
-                {position ? copy.after : copy.before}
+              {copy.photo}
+            </button>
+            <button
+              type="button"
+              aria-pressed={mode === "video"}
+              onClick={() => setMode("video")}
+            >
+              <Play size={14} aria-hidden="true" />
+              {copy.video}
+            </button>
+          </div>
+        </div>
+        <div className="gallery-presentation">
+          <div
+            className={`gallery-stage ${mode === "video" ? "is-video" : ""}`}
+          >
+            {mode === "photo" ? (
+              (["once", "sonra"] as const).map((kind, position) => (
+                <button
+                  type="button"
+                  key={kind}
+                  className="comparison-photo"
+                  onClick={open}
+                  aria-label={`${copy.open} · ${current.title} · ${position ? copy.after : copy.before}`}
+                >
+                  <span className="comparison-image-wrap">
+                    <Image
+                      key={`${kind}-${number}`}
+                      src={`/media/photos/uygulama-${number}-${kind}.jpg`}
+                      alt={position ? current.afterAlt : current.beforeAlt}
+                      width={1320}
+                      height={2340}
+                      sizes="(max-width: 800px) 44vw, (max-width: 1440px) 30vw, 380px"
+                      draggable={false}
+                    />
+                  </span>
+                  <span className="comparison-caption">
+                    <span>{position ? copy.after : copy.before}</span>
+                    <Expand size={16} aria-hidden="true" />
+                  </span>
+                </button>
+              ))
+            ) : (
+              <div className="gallery-video-wrap">
+                <video
+                  key={number}
+                  className="transformation-video"
+                  src={`/media/videos/uygulama-${number}.mp4`}
+                  poster={`/media/photos/uygulama-${number}-sonra.jpg`}
+                  controls
+                  playsInline
+                  autoPlay
+                  preload="metadata"
+                  aria-label={`${current.title} · ${copy.video}`}
+                >
+                  <a href={`/media/videos/uygulama-${number}.mp4`}>
+                    {ui.videoUnsupported}
+                  </a>
+                </video>
+              </div>
+            )}
+          </div>
+          <div className="gallery-story-panel">
+            <div
+              className="gallery-active-story"
+              aria-live="polite"
+              aria-atomic="true"
+            >
+              <span className="gallery-story-number" dir="ltr">
+                {number} <span>/ {total}</span>
               </span>
-              <Expand className="expand-icon" size={18} />
-            </button>
-          ))
-        ) : (
-          <video
-            key={number}
-            className="transformation-video"
-            src={`/media/videos/uygulama-${number}.mp4`}
-            poster={`/media/photos/uygulama-${number}-sonra.jpg`}
-            controls
-            playsInline
-            autoPlay
-            preload="metadata"
-            aria-label={`${current.title} · ${copy.video}`}
-          >
-            <a href={`/media/videos/uygulama-${number}.mp4`}>
-              {ui.videoUnsupported}
-            </a>
-          </video>
-        )}
-      </div>
-      <div
-        className="gallery-active-story"
-        aria-live="polite"
-        aria-atomic="true"
-      >
-        <span className="gallery-story-number" dir="ltr">
-          {number} / {total}
-        </span>
-        <div>
-          <h3>{current.title}</h3>
-          <p>{current.description}</p>
-        </div>
-      </div>
-      <div className="gallery-bottom">
-        <div
-          className="gallery-thumbnails"
-          role="group"
-          aria-label={copy.title}
-        >
-          {cases.map((item, i) => (
+              <h3>{current.title}</h3>
+              <p>{current.description}</p>
+            </div>
             <button
-              key={item.id}
-              ref={i === index ? activeThumb : undefined}
-              className={i === index ? "selected" : ""}
-              aria-label={`${copy.application} ${item.id} · ${item.title}`}
-              aria-pressed={i === index}
-              onClick={() => choose(i)}
+              type="button"
+              className="gallery-open-action"
+              onClick={open}
             >
-              <Image
-                src={`/media/photos/uygulama-${item.id}-sonra.jpg`}
-                alt=""
-                width={84}
-                height={108}
-                sizes="70px"
-              />
-              <span>{item.id}</span>
+              {copy.open}
+              <Expand size={17} aria-hidden="true" />
             </button>
-          ))}
+            <div className="gallery-navigation">
+              <span className="gallery-navigation-line" aria-hidden="true" />
+              <div className="gallery-arrows">
+                <button
+                  type="button"
+                  className="gallery-arrow-button"
+                  aria-label={copy.previous}
+                  onClick={() => step(-1)}
+                >
+                  {rtl ? (
+                    <ArrowRight size={20} aria-hidden="true" />
+                  ) : (
+                    <ArrowLeft size={20} aria-hidden="true" />
+                  )}
+                </button>
+                <button
+                  type="button"
+                  className="gallery-arrow-button"
+                  aria-label={copy.next}
+                  onClick={() => step(1)}
+                >
+                  {rtl ? (
+                    <ArrowLeft size={20} aria-hidden="true" />
+                  ) : (
+                    <ArrowRight size={20} aria-hidden="true" />
+                  )}
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
-        <div className="gallery-arrows">
-          <button
-            className="circle-button"
-            aria-label={copy.previous}
-            onClick={() => step(-1)}
+        <div className="gallery-bottom">
+          <div
+            className="gallery-thumbnails"
+            role="group"
+            aria-label={copy.title}
           >
-            {rtl ? <ArrowRight size={20} /> : <ArrowLeft size={20} />}
-          </button>
-          <button
-            className="circle-button"
-            aria-label={copy.next}
-            onClick={() => step(1)}
-          >
-            {rtl ? <ArrowLeft size={20} /> : <ArrowRight size={20} />}
-          </button>
+            {cases.map((item, i) => (
+              <button
+                type="button"
+                key={item.id}
+                ref={i === index ? activeThumb : undefined}
+                className={i === index ? "selected" : ""}
+                aria-label={`${copy.application} ${item.id} · ${item.title}`}
+                aria-pressed={i === index}
+                onClick={() => choose(i)}
+              >
+                <Image
+                  src={`/media/photos/uygulama-${item.id}-sonra.jpg`}
+                  alt=""
+                  width={84}
+                  height={108}
+                  sizes="72px"
+                />
+                <span>{item.id}</span>
+              </button>
+            ))}
+          </div>
         </div>
       </div>
       <p className="caption gallery-note">{copy.note}</p>
@@ -303,7 +343,7 @@ export function Gallery({
           <span className="gallery-directory-count" dir="ltr">
             {total}
           </span>
-          <ChevronDown size={17} />
+          <ChevronDown size={17} aria-hidden="true" />
         </summary>
         <ol className="gallery-case-list">
           {cases.map((item, i) => (
@@ -330,12 +370,13 @@ export function Gallery({
               <h4>{item.title}</h4>
               <p>{item.description}</p>
               <button
-                className="text-link"
+                type="button"
+                className="gallery-directory-open"
                 onClick={(event) => open(event, i)}
                 aria-label={`${copy.open} · ${item.title}`}
               >
                 {copy.open}
-                <Expand size={15} />
+                <Expand size={15} aria-hidden="true" />
               </button>
             </li>
           ))}
@@ -359,12 +400,13 @@ export function Gallery({
               {number} / {total}
             </span>
             <button
-              className="dialog-close circle-button"
+              type="button"
+              className="gallery-dialog-close"
               onClick={close}
               aria-label={copy.close}
               autoFocus
             >
-              <X size={22} />
+              <X size={22} aria-hidden="true" />
             </button>
           </div>
           <div
@@ -394,18 +436,28 @@ export function Gallery({
               ))}
             </div>
             <button
+              type="button"
               className="gallery-detail-arrow gallery-detail-previous"
               aria-label={copy.previous}
               onClick={() => step(-1)}
             >
-              {rtl ? <ArrowRight size={23} /> : <ArrowLeft size={23} />}
+              {rtl ? (
+                <ArrowRight size={23} aria-hidden="true" />
+              ) : (
+                <ArrowLeft size={23} aria-hidden="true" />
+              )}
             </button>
             <button
+              type="button"
               className="gallery-detail-arrow gallery-detail-next"
               aria-label={copy.next}
               onClick={() => step(1)}
             >
-              {rtl ? <ArrowLeft size={23} /> : <ArrowRight size={23} />}
+              {rtl ? (
+                <ArrowLeft size={23} aria-hidden="true" />
+              ) : (
+                <ArrowRight size={23} aria-hidden="true" />
+              )}
             </button>
           </div>
           <div

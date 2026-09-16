@@ -12,6 +12,14 @@ import {
   Phone,
   Instagram,
   Youtube,
+  Sparkles,
+  Fingerprint,
+  HeartHandshake,
+  Droplets,
+  Moon,
+  Wind,
+  Waves,
+  Scissors,
 } from "lucide-react";
 import { getContent } from "@/content";
 import { isLocale, locales, localePath } from "@/i18n/routing";
@@ -206,83 +214,95 @@ export default async function Home({ params }: Props) {
       </a>
       <Header locale={locale} nav={c.nav} actions={c.actions} />
       <main id="icerik">
-        <section className="hero" id="baslangic">
-          <div className="hero-copy">
+        <section className="hero section" id="baslangic">
+          <div className="hero-heading">
             {eyebrow(c.hero.eyebrow)}
             <h1>
-              {c.hero.title}
-              <br />
-              <span>{c.hero.accent}</span>
+              {c.hero.title} <span>{c.hero.accent}</span>
             </h1>
+          </div>
+          <div className="hero-visual">
+            <div className="hero-photo-frame">
+              <Image
+                className="hero-image"
+                src="/media/photos/uygulama-01-sonra.jpg"
+                alt={galleryCases[0].afterAlt}
+                width={1320}
+                height={2338}
+                sizes="(max-width: 700px) 90vw, (max-width: 1100px) 48vw, 560px"
+                loading="eager"
+                fetchPriority="high"
+                quality={85}
+              />
+              <div className="hero-photo-shade" />
+              <span className="hero-after-label">
+                {c.gallery.after}
+                <span dir="ltr">01 / 09</span>
+              </span>
+            </div>
+            <a className="hero-before" href="#donusumler">
+              <Image
+                src="/media/photos/uygulama-01-once.jpg"
+                alt={galleryCases[0].beforeAlt}
+                width={1320}
+                height={2340}
+                sizes="(max-width: 700px) 106px, 140px"
+              />
+              <span>
+                {c.gallery.before}
+                <ArrowUpRight size={15} aria-hidden="true" />
+              </span>
+            </a>
+            <div className="hero-seal" aria-hidden="true">
+              <Scissors size={27} strokeWidth={1} />
+              <span>
+                PLATİN
+                <br />
+                ANTALYA
+              </span>
+            </div>
+            <p className="hero-photo-caption">
+              <span className="live-dot" />
+              {c.hero.photoCaption}
+            </p>
+          </div>
+          <div className="hero-copy">
             <p className="hero-description">{c.hero.description}</p>
             <div className="hero-actions">
               <a className="button" href={links.consultation}>
                 {c.actions.consult}
-                <ArrowUpRight size={19} />
+                <ArrowUpRight size={18} aria-hidden="true" />
               </a>
               <a
                 className="button button-outline hero-discover"
                 href="#donusumler"
               >
                 {c.actions.discover}
-                <ArrowDown size={16} />
+                <ArrowDown size={18} aria-hidden="true" />
               </a>
             </div>
             <p className="hero-note">{c.hero.note}</p>
-            <div className="hero-proof">
-              {c.hero.details.map((text, i) => (
-                <span key={text}>
-                  <span className="proof-index">0{i + 1}</span>
-                  {text}
-                </span>
-              ))}
+            <div className="hero-location">
+              <MapPin size={14} aria-hidden="true" />
+              <span>LARA / ANTALYA</span>
+              <span className="hero-location-line" />
             </div>
           </div>
-          <div className="hero-visual">
-            <Image
-              className="hero-image"
-              src="/media/photos/uygulama-01-sonra.jpg"
-              alt={`${c.gallery.application} 01 · ${c.gallery.after} · Platin Antalya`}
-              width={1320}
-              height={2340}
-              sizes="(max-width: 700px) 100vw, 52vw"
-              loading="eager"
-              fetchPriority="high"
-              quality={85}
-            />
-            <div className="hero-photo-shade" />
-            <a className="hero-before" href="#donusumler">
-              <Image
-                src="/media/photos/uygulama-01-once.jpg"
-                alt={`${c.gallery.application} 01 · ${c.gallery.before}`}
-                width={1320}
-                height={2340}
-                sizes="(max-width: 700px) 94px, 130px"
-              />
-              <span>
-                {c.gallery.before}
-                <ArrowUpRight size={12} />
-              </span>
-            </a>
-            <div className="hero-photo-caption">
-              <span className="live-dot" />
-              {c.hero.photoCaption}
-              <span className="hero-photo-number">01 / 09</span>
-            </div>
-            <span className="vertical-word" aria-hidden="true">
-              PLATİN ANTALYA
-            </span>
+          <div className="hero-proof">
+            {c.hero.details.map((text, i) => {
+              const Icon = [Fingerprint, Sparkles, HeartHandshake][i];
+              return (
+                <div key={text}>
+                  <span className="proof-icon">
+                    <Icon size={23} strokeWidth={1.4} aria-hidden="true" />
+                  </span>
+                  <span>{text}</span>
+                  <span className="proof-index">0{i + 1}</span>
+                </div>
+              );
+            })}
           </div>
         </section>
-        <div className="brand-strip" aria-hidden="true">
-          <span>PLATİN ANTALYA</span>
-          <span>•</span>
-          <span>MIKRO KAYNAK</span>
-          <span>•</span>
-          <span>LARA, ANTALYA</span>
-          <span>•</span>
-          <span>PLATİN ANTALYA</span>
-        </div>
 
         <section id="donusumler" className="section results-section">
           <div className="section-heading" data-reveal>
@@ -301,10 +321,6 @@ export default async function Home({ params }: Props) {
         </section>
 
         <section id="mikro-kaynak" className="section intro-section">
-          <div className="intro-heading" data-reveal>
-            {eyebrow(c.intro.eyebrow)}
-            <h2>{c.intro.title}</h2>
-          </div>
           <div className="intro-grid">
             <div className="intro-image" data-reveal>
               <Image
@@ -314,9 +330,13 @@ export default async function Home({ params }: Props) {
                 height={2340}
                 sizes="(max-width: 700px) 90vw, 35vw"
               />
-              <span className="image-label">PLATİN ANTALYA</span>
+              <span className="image-label">
+                PLATİN ANTALYA <ArrowUpRight size={16} aria-hidden="true" />
+              </span>
             </div>
             <div className="intro-body" data-reveal>
+              {eyebrow(c.intro.eyebrow)}
+              <h2>{c.intro.title}</h2>
               <h3>{c.intro.lead}</h3>
               {c.intro.paragraphs.map((p) => (
                 <p key={p}>{p}</p>
@@ -329,7 +349,7 @@ export default async function Home({ params }: Props) {
                       <h4>{p.title}</h4>
                       <p>{p.text}</p>
                     </div>
-                    <Plus size={18} />
+                    <Check size={18} aria-hidden="true" />
                   </div>
                 ))}
               </div>
@@ -337,7 +357,7 @@ export default async function Home({ params }: Props) {
           </div>
         </section>
 
-        <section className="planning-section">
+        <section className="planning-section" id="gramaj">
           <div className="section planning-grid">
             <div className="planning-copy" data-reveal>
               {eyebrow(c.planning.eyebrow)}
@@ -368,7 +388,7 @@ export default async function Home({ params }: Props) {
             <div className="planning-facts">
               {c.planning.facts.map((f, i) => (
                 <div key={f.title} data-reveal>
-                  <span>0{i + 1}</span>
+                  <span className="fact-index">0{i + 1}</span>
                   <h3>{f.title}</h3>
                   <p>{f.text}</p>
                 </div>
@@ -455,6 +475,16 @@ export default async function Home({ params }: Props) {
               {eyebrow(c.price.eyebrow)}
               <h2>{c.price.title}</h2>
               <p className="lead">{c.price.description}</p>
+              <div className="price-portrait">
+                <Image
+                  src="/media/photos/uygulama-07-sonra.jpg"
+                  alt={galleryCases[6].afterAlt}
+                  width={1320}
+                  height={2340}
+                  sizes="(max-width: 700px) 90vw, 36vw"
+                />
+                <span>{c.hero.photoCaption}</span>
+              </div>
             </div>
             <div className="price-panel" data-reveal>
               <div className="price-hair" aria-hidden="true">
@@ -507,7 +537,20 @@ export default async function Home({ params }: Props) {
           <div className="care-grid">
             {c.care.items.map((item, i) => (
               <article key={item.title} data-reveal>
-                <span className="care-index">0{i + 1}</span>
+                <div className="care-card-top">
+                  <span className="care-icon">
+                    {i === 0 ? (
+                      <Droplets aria-hidden="true" />
+                    ) : i === 1 ? (
+                      <Moon aria-hidden="true" />
+                    ) : i === 2 ? (
+                      <Wind aria-hidden="true" />
+                    ) : (
+                      <Waves aria-hidden="true" />
+                    )}
+                  </span>
+                  <span className="care-index">0{i + 1}</span>
+                </div>
                 <h3>{item.title}</h3>
                 <p>{item.text}</p>
               </article>
@@ -539,9 +582,7 @@ export default async function Home({ params }: Props) {
               />
             </div>
             <div className="experience-copy" data-reveal>
-              <span className="quote-mark" aria-hidden="true">
-                “
-              </span>
+              {eyebrow(c.hero.photoCaption)}
               <h2>{c.care.videoTitle}</h2>
               <p className="lead">{c.care.videoDescription}</p>
               <p className="caption">{c.care.videoNote}</p>
@@ -632,27 +673,41 @@ export default async function Home({ params }: Props) {
 
         <section id="iletisim" className="contact-section">
           <div className="section">
-            <div className="contact-top" data-reveal>
-              {eyebrow(c.contact.eyebrow)}
-              <h2>{c.contact.title}</h2>
-              <p>{c.contact.description}</p>
-              <div className="contact-actions">
-                <a
-                  className="button button-light action-button"
-                  href={links.consultation}
-                >
-                  <span>{c.actions.consult}</span>
-                  <ArrowUpRight size={19} />
-                </a>
-                <a
-                  className="button action-button button-bronze"
-                  href={links.booking}
-                >
-                  <span>{c.actions.book}</span>
-                  <ArrowUpRight size={18} />
-                </a>
+            <div className="contact-hero">
+              <div className="contact-top" data-reveal>
+                {eyebrow(c.contact.eyebrow)}
+                <h2>{c.contact.title}</h2>
+                <p>{c.contact.description}</p>
+                <div className="contact-actions">
+                  <a
+                    className="button button-light action-button"
+                    href={links.consultation}
+                  >
+                    <span>{c.actions.consult}</span>
+                    <ArrowUpRight size={19} />
+                  </a>
+                  <a
+                    className="button action-button button-bronze"
+                    href={links.booking}
+                  >
+                    <span>{c.actions.book}</span>
+                    <ArrowUpRight size={18} />
+                  </a>
+                </div>
+                <p className="caption">{c.contact.bookingNote}</p>
               </div>
-              <p className="caption">{c.contact.bookingNote}</p>
+              <div className="contact-portrait" data-reveal>
+                <Image
+                  src="/media/photos/uygulama-05-sonra.jpg"
+                  alt={galleryCases[4].afterAlt}
+                  width={1320}
+                  height={2340}
+                  sizes="(max-width: 700px) 90vw, 36vw"
+                />
+                <span className="contact-portrait-label">
+                  PLATİN ANTALYA · LARA
+                </span>
+              </div>
             </div>
             <div className="contact-details">
               <div>

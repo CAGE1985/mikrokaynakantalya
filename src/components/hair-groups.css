@@ -1,65 +1,154 @@
-.hair-group-interactive {
+.hair-groups {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  margin-bottom: 32px;
+}
+.hair-group {
+  --hair-tone: #674a36;
+  --hair-surface: #ebe2d6;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  border: 1px solid var(--line, #ded7cc);
+  border-radius: 12px;
+  background: var(--paper, #f7f4ee);
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+}
+.hair-group-1 {
+  --hair-tone: #8b674b;
+  --hair-surface: #e7e1d7;
+}
+.hair-group-2 {
+  --hair-tone: #8d7155;
+  --hair-surface: #eee7dc;
+}
+.hair-art {
+  position: relative;
+  height: 204px;
+  overflow: hidden;
+  margin: 10px 10px 0;
+  border-radius: 6px;
+  background: var(--hair-surface);
+  color: var(--hair-tone);
+}
+.hair-art-index {
+  position: absolute;
+  z-index: 1;
+  inset-block-start: 20px;
+  inset-inline-start: 20px;
+  color: var(--ink, #27231f);
+  font-size: 12px;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.08em;
+}
+.hair-art svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transition: transform 480ms cubic-bezier(0.2, 0.6, 0.2, 1);
+}
+.hair-group-title {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  padding: 26px;
 }
 .hair-group-copy {
+  display: flex;
+  flex-direction: column;
   min-width: 0;
   flex: 1;
+}
+.hair-group-title h3 {
+  margin: 0;
+  font-family: var(--font-display), Georgia, serif;
+  font-size: clamp(25px, 2.4vw, 34px);
+  font-weight: 500;
+  letter-spacing: -0.035em;
+  line-height: 1.2;
+  color: var(--ink, #27231f);
+  overflow-wrap: break-word;
+}
+.hair-group-description {
+  flex: 1;
+  max-width: 30ch;
+  margin: 14px 0 26px;
+  color: var(--muted, #665f57);
+  font-size: 15px;
+  line-height: 1.65;
+  text-wrap: pretty;
 }
 .hair-detail-trigger {
   display: flex;
   align-items: center;
-  gap: 12px;
-  min-height: 44px;
-  padding: 4px 0 0;
-  color: #79583f;
-  font-size: 13.5px;
-  font-weight: 550;
-  letter-spacing: 0.01em;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+  min-height: 48px;
+  padding: 12px 18px;
+  border: 1px solid var(--bronze, #89664d);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--ink, #27231f);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.45;
   text-align: start;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition:
+    background 160ms ease,
+    color 160ms ease;
 }
-.hair-detail-trigger::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 5px;
+.hair-detail-trigger svg {
+  flex: 0 0 auto;
+  color: inherit;
 }
-.hair-group-interactive:has(:focus-visible) {
-  outline: 2px solid var(--bronze);
-  outline-offset: 6px;
+.hair-detail-trigger:focus-visible,
+.hair-dialog :is(button, a):focus-visible {
+  outline: 2px solid var(--ink, #27231f);
+  outline-offset: 4px;
 }
-.hair-detail-trigger:focus-visible {
-  outline: none;
+.hair-detail-trigger:active {
+  background: var(--hair-surface);
 }
-.hair-group-interactive .hair-art svg {
-  transition: transform 0.45s ease;
-}
-.hair-group-interactive:hover .hair-art svg {
-  transform: scale(1.055);
-}
-.hair-group-interactive:hover .hair-detail-trigger {
-  text-decoration: underline;
-  text-underline-offset: 4px;
-}
-.hair-group-title .hair-detail-trigger svg {
-  margin-inline-start: 0;
+@media (hover: hover) {
+  .hair-group:hover {
+    border-color: var(--bronze, #89664d);
+    box-shadow: 0 12px 32px #27231f08;
+  }
+  .hair-group:hover .hair-art svg {
+    transform: scale(1.045);
+  }
+  .hair-detail-trigger:hover {
+    background: var(--ink, #27231f);
+    color: var(--paper, #f7f4ee);
+    border-color: var(--ink, #27231f);
+  }
 }
 .hair-dialog {
   padding: 0;
   margin: auto;
-  border: 1px solid #d4c8b9;
-  border-radius: 14px;
-  width: min(780px, calc(100vw - 48px));
+  border: 1px solid var(--line, #ded7cc);
+  border-radius: 16px;
+  width: min(760px, calc(100vw - 48px));
   max-width: none;
   max-height: min(900px, calc(100dvh - 64px));
-  background: var(--paper);
-  color: var(--ink);
+  background: var(--paper, #f7f4ee);
+  color: var(--ink, #27231f);
   overflow: hidden;
   box-shadow: 0 24px 90px #0004;
 }
 .hair-dialog[open] {
   display: flex;
   flex-direction: column;
-  animation: hair-dialog-in 0.22s ease-out;
+  animation: hair-dialog-in 220ms ease-out;
 }
 .hair-dialog::backdrop {
   background: #201b16b3;
@@ -70,50 +159,78 @@
   justify-content: space-between;
   align-items: center;
   gap: 20px;
-  padding: 26px 36px;
-  border-bottom: 1px solid var(--line);
-  background: #eee7dd;
+  padding: 28px 36px;
+  border-bottom: 1px solid var(--line, #ded7cc);
+  background: #eee8de;
   flex-shrink: 0;
 }
+.hair-dialog-header > div {
+  min-width: 0;
+}
 .hair-dialog-brand {
-  color: #79583f;
-  font-size: 9px;
-  letter-spacing: 0.16em;
-  margin-bottom: 10px;
+  color: var(--bronze-text, #78563f);
+  font-size: 11px;
+  line-height: 1.5;
+  letter-spacing: 0.13em;
+  margin: 0 0 10px;
 }
 .hair-dialog-brand span {
   margin-inline: 8px;
 }
 .hair-dialog-header h2 {
-  font-size: clamp(26px, 4vw, 38px);
+  margin: 0;
+  font-family: var(--font-display), Georgia, serif;
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 500;
   letter-spacing: -0.04em;
   line-height: 1.15;
+  overflow-wrap: break-word;
 }
 .hair-dialog-close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   flex-shrink: 0;
-  background: var(--paper);
-  color: var(--ink);
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border: 1px solid var(--bronze, #89664d);
+  border-radius: 50%;
+  background: var(--paper, #f7f4ee);
+  color: var(--ink, #27231f);
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: background 160ms ease;
+}
+.hair-dialog-close:hover,
+.hair-dialog-close:active {
+  background: #e5dacd;
 }
 .hair-dialog-body {
   overflow-y: auto;
   overscroll-behavior: contain;
-  padding: 30px 36px 36px;
+  padding: 32px 36px 36px;
   min-height: 0;
+  scrollbar-gutter: stable;
+  scroll-padding-block: 20px;
 }
 .hair-dialog-body p {
-  font-size: 15px;
+  font-size: 16px;
   line-height: 1.8;
-  color: var(--muted);
-  margin-top: 12px;
+  color: var(--muted, #665f57);
+  margin: 12px 0 0;
+  overflow-wrap: break-word;
 }
 .hair-dialog .hair-dialog-intro-title {
-  font-size: 21px;
-  margin-bottom: 14px;
-  line-height: 1.4;
+  font-size: 22px;
+  font-weight: 500;
+  margin: 0 0 16px;
+  line-height: 1.45;
 }
 .hair-dialog .hair-features-heading {
-  font-size: 18px;
-  margin-block: 34px 18px;
+  font-size: 19px;
+  font-weight: 500;
+  margin: 36px 0 18px;
   line-height: 1.45;
 }
 .hair-features {
@@ -123,116 +240,142 @@
 }
 .hair-features li {
   display: grid;
-  grid-template-columns: 26px 1fr;
+  grid-template-columns: 26px minmax(0, 1fr);
   gap: 18px;
-  padding-block: 22px;
-  border-top: 1px solid var(--line);
+  padding-block: 24px;
+  border-top: 1px solid var(--line, #ded7cc);
 }
 .hair-feature-number {
-  color: #79583f;
-  font-size: 11px;
+  color: var(--bronze, #89664d);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
   padding-top: 5px;
 }
 .hair-features h4 {
+  margin: 0;
   font-size: 17px;
   font-weight: 550;
-  line-height: 1.45;
+  line-height: 1.5;
 }
 .hair-features li p {
   margin-top: 8px;
 }
 .hair-dialog-summary {
-  padding: 24px;
+  padding: 26px;
   margin-top: 20px;
-  border-radius: 6px;
-  background: #eae3d8;
+  border-radius: 8px;
+  background: #eee8de;
 }
 .hair-dialog-summary h3 {
+  margin: 0;
   font-size: 19px;
+  font-weight: 500;
   line-height: 1.45;
 }
 .hair-dialog-footer {
-  padding-top: 20px;
+  padding-top: 26px;
 }
 .hair-dialog-footer p {
-  font-size: 12px;
-  margin-block: 0 24px;
+  font-size: 13px;
+  margin: 0 0 24px;
 }
 .hair-dialog-footer .button {
   width: 100%;
+  min-height: 52px;
   justify-content: space-between;
 }
 @keyframes hair-dialog-in {
   from {
     opacity: 0;
-    transform: translateY(14px);
+    transform: translateY(12px);
   }
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
+@media (max-width: 1000px) {
+  .hair-groups {
+    gap: 16px;
+  }
+  .hair-group-title {
+    padding: 22px 18px;
+  }
+  .hair-art {
+    height: 180px;
+  }
+}
 @media (max-width: 700px) {
-  .hair-group-interactive .hair-group-title {
-    align-items: flex-start;
-    gap: 10px;
-    flex-wrap: nowrap;
+  .hair-groups {
+    grid-template-columns: 1fr;
+    gap: 20px;
   }
-  .hair-group-interactive .hair-group-title > span {
-    padding-top: 7px;
+  .hair-art {
+    height: 146px;
   }
-  .hair-group-interactive .hair-group-title h3 {
-    font-size: clamp(20px, 5.5vw, 24px);
-    min-width: 0;
+  .hair-art svg {
+    width: 80%;
+    margin-inline: auto;
+  }
+  .hair-group-title {
+    padding: 22px;
+  }
+  .hair-group-title h3 {
+    font-size: 32px;
+  }
+  .hair-group-description {
+    max-width: none;
+    margin: 10px 0 20px;
+    font-size: 16px;
   }
   .hair-detail-trigger {
-    font-size: 12px;
+    font-size: 15px;
+    min-height: 50px;
   }
   .hair-dialog {
     width: calc(100vw - 20px);
-    max-height: calc(100dvh - 24px);
+    max-height: calc(
+      100dvh - 24px - env(safe-area-inset-top, 0px) -
+        env(safe-area-inset-bottom, 0px)
+    );
     border-radius: 12px;
   }
   .hair-dialog-header {
-    padding: 20px;
+    padding: 22px;
     gap: 12px;
   }
   .hair-dialog-brand {
-    font-size: 8px;
+    font-size: 10px;
     letter-spacing: 0.1em;
   }
   .hair-dialog-header h2 {
-    font-size: 27px;
+    font-size: 29px;
   }
   .hair-dialog-body {
-    padding: 24px 20px;
-  }
-  .hair-dialog-body p {
-    font-size: 14px;
-    line-height: 1.8;
+    padding: 26px 22px;
   }
   .hair-dialog .hair-dialog-intro-title {
-    font-size: 19px;
+    font-size: 21px;
   }
   .hair-features li {
-    gap: 10px;
-    grid-template-columns: 22px 1fr;
-  }
-  .hair-features h4 {
-    font-size: 16px;
+    gap: 12px;
+    grid-template-columns: 22px minmax(0, 1fr);
   }
   .hair-dialog-summary {
-    padding: 19px;
-  }
-  .hair-dialog-footer p {
-    font-size: 12px;
+    padding: 20px;
   }
 }
 @media (prefers-reduced-motion: reduce) {
   .hair-dialog[open] {
     animation: none;
   }
-  .hair-group-interactive .hair-art svg {
+  .hair-group,
+  .hair-art svg,
+  .hair-detail-trigger,
+  .hair-dialog-close {
     transition: none;
+  }
+  .hair-group:hover .hair-art svg {
+    transform: none;
   }
 }
