@@ -2,10 +2,8 @@ export const SITE_URL = "https://mikrokaynakantalya.com";
 // Keep share images reachable while the custom domain's DNS is being connected.
 export const SOCIAL_IMAGE_ORIGIN = "https://mikrokaynakantalya.vercel.app";
 export const links = {
-  consultation:
-    "https://www.platinantalya.com/booking-calendar/%C3%BCcretsiz-%C3%B6n-g%C3%B6r%C3%BC%C5%9Fme",
-  booking:
-    "https://www.platinantalya.com/service-page/mikro-kaynak-yeni-uygulama",
+  consultation: "https://www.platinantalya.com/randevu",
+  booking: "https://www.platinantalya.com/randevu",
   calculator: "https://hesapla.platinantalya.com/",
   whatsapp: "https://wa.me/905558923770",
   phone: "tel:+905558923770",

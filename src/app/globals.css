@@ -556,6 +556,13 @@ section[id],
 .results-section .section-heading h2 {
   max-width: 670px;
 }
+.results-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px;
+  margin-top: 32px;
+}
 
 /* The method: a complete portrait and a readable, personal explanation. */
 .intro-section {

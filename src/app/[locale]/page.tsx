@@ -127,6 +127,11 @@ export default async function Home({ params }: Props) {
         name: "Platin Antalya",
         url: "https://www.platinantalya.com",
         logo: `${SITE_URL}/media/logo.png`,
+        image: [
+          `${SITE_URL}/media/photos/uygulama-01-sonra.jpg`,
+          `${SITE_URL}/media/photos/uygulama-09-sonra.jpg`,
+          `${SITE_URL}/media/photos/uygulama-07-sonra.jpg`,
+        ],
         telephone: "+905558923770",
         address: {
           "@type": "PostalAddress",
@@ -135,6 +140,17 @@ export default async function Home({ params }: Props) {
           addressRegion: "Antalya",
           addressCountry: "TR",
         },
+        geo: {
+          "@type": "GeoCoordinates",
+          latitude: 36.8576,
+          longitude: 30.7463,
+        },
+        areaServed: [
+          { "@type": "City", name: "Antalya" },
+          { "@type": "AdministrativeArea", name: "Muratpaşa" },
+          { "@type": "Place", name: "Lara, Antalya" },
+        ],
+        knowsLanguage: locales,
         hasMap: links.directions,
         sameAs: [links.instagram, links.youtube],
         openingHoursSpecification: [
@@ -152,6 +168,28 @@ export default async function Home({ params }: Props) {
             closes: "19:00",
           },
         ],
+        hasOfferCatalog: {
+          "@type": "OfferCatalog",
+          name: c.hair.title,
+          itemListElement: hairDetails.groups.map((group) => ({
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: `Platin Antalya · ${group.name}`,
+              description: group.intro.join(" "),
+              provider: { "@id": businessId },
+            },
+          })),
+        },
+      },
+      {
+        "@type": "Service",
+        "@id": `${SITE_URL}${localePath(locale)}#service`,
+        name: c.meta.title,
+        description: c.intro.paragraphs.join(" "),
+        provider: { "@id": businessId },
+        areaServed: { "@type": "City", name: "Antalya" },
+        availableLanguage: locales,
       },
       {
         "@type": "WebSite",
@@ -170,6 +208,7 @@ export default async function Home({ params }: Props) {
         inLanguage: locale,
         isPartOf: { "@id": SITE_URL + "/#website" },
         about: { "@id": businessId },
+        mainEntity: { "@id": `${SITE_URL}${localePath(locale)}#service` },
         hasPart: [
           { "@id": SITE_URL + "/#video-planlama" },
           { "@id": SITE_URL + "/#video-deneyim" },
@@ -318,6 +357,22 @@ export default async function Home({ params }: Props) {
             cases={galleryCases}
             locale={locale}
           />
+          <div className="results-actions" data-reveal>
+            <a
+              className="button action-button button-bronze"
+              href={links.consultation}
+            >
+              <span>{c.actions.consult}</span>
+              <ArrowUpRight size={18} aria-hidden="true" />
+            </a>
+            <a
+              className="button button-outline action-button"
+              href={links.calculator}
+            >
+              <span>{c.actions.calculate}</span>
+              <ArrowUpRight size={18} aria-hidden="true" />
+            </a>
+          </div>
         </section>
 
         <section id="mikro-kaynak" className="section intro-section">
@@ -566,6 +621,8 @@ export default async function Home({ params }: Props) {
               <a
                 className="button action-button button-whatsapp"
                 href={links.whatsapp}
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <WhatsAppIcon />
                 <span>{c.actions.whatsapp}</span>
@@ -632,6 +689,18 @@ export default async function Home({ params }: Props) {
                               <a
                                 key={action}
                                 href={faqDestinations[action]}
+                                target={
+                                  action === "whatsapp" ||
+                                  action === "directions"
+                                    ? "_blank"
+                                    : undefined
+                                }
+                                rel={
+                                  action === "whatsapp" ||
+                                  action === "directions"
+                                    ? "noopener noreferrer"
+                                    : undefined
+                                }
                                 className={`button action-button ${
                                   action === "whatsapp"
                                     ? "button-whatsapp"
@@ -715,7 +784,12 @@ export default async function Home({ params }: Props) {
                 <p>
                   <bdi dir="ltr">{address}</bdi>
                 </p>
-                <a className="text-link" href={links.directions}>
+                <a
+                  className="text-link"
+                  href={links.directions}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <MapPin size={15} />
                   {c.actions.directions}
                   <ArrowUpRight size={15} />
@@ -736,6 +810,8 @@ export default async function Home({ params }: Props) {
                 <a
                   className="button action-button button-whatsapp"
                   href={links.whatsapp}
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <WhatsAppIcon />
                   <span>{c.actions.whatsapp}</span>
@@ -762,10 +838,20 @@ export default async function Home({ params }: Props) {
             role="group"
             aria-label={c.footer.social}
           >
-            <a href={links.instagram} aria-label="Instagram">
+            <a
+              href={links.instagram}
+              aria-label="Instagram"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <Instagram size={21} />
             </a>
-            <a href={links.youtube} aria-label="YouTube">
+            <a
+              href={links.youtube}
+              aria-label="YouTube"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <Youtube size={23} />
             </a>
             <a href={links.phone} aria-label={c.actions.call}>
